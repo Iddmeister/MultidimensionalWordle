@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Board/BoardSprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/3DGrid.gd" type="Script" id=2]
+[ext_resource path="res://Game/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Misc/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+
+[node name="Game" type="Node"]
+
+[node name="Move" type="Tween" parent="."]
+
+[node name="3DGrid" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="BoardSprite" parent="3DGrid" instance=ExtResource( 1 )]
+
+[node name="BoardSprite2" parent="3DGrid" instance=ExtResource( 1 )]
+
+[node name="BoardSprite3" parent="3DGrid" instance=ExtResource( 1 )]
+
+[node name="BoardSprite4" parent="3DGrid" instance=ExtResource( 1 )]
+
+[node name="BoardSprite5" parent="3DGrid" instance=ExtResource( 1 )]
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5107 )
+script = ExtResource( 3 )
+
+[node name="Zoom" type="Tween" parent="Pivot/Camera"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
+margin_right = 150.0
+margin_bottom = 100.0
+theme = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
+margin_right = 150.0
+margin_bottom = 121.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 145.0
+margin_bottom = 116.0
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 140.0
+margin_bottom = 19.0
+text = "X Spacing"
+align = 1
+
+[node name="xspacing" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 140.0
+margin_bottom = 39.0
+min_value = -7.0
+max_value = 7.0
+
+[node name="Label2" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 140.0
+margin_bottom = 62.0
+text = "Z Spacing"
+align = 1
+
+[node name="zspacing" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 140.0
+margin_bottom = 82.0
+max_value = 7.0
+value = 1.0
+
+[node name="Reset" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 140.0
+margin_bottom = 111.0
+text = "Reset"
+
+[connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/xspacing" to="3DGrid" method="_on_xspacing_value_changed"]
+[connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/zspacing" to="3DGrid" method="_on_zspacing_value_changed"]
