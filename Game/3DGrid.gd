@@ -15,7 +15,18 @@ func _ready():
 		board.transform.origin.z = (b-2)*zspacing
 		board.transform.origin.x = (b-2)*-xspacing
 		board.texture = board.get_node("Viewport").get_texture()
+		var area:Area = board.get_node("Area")
+		area.connect("input_event", self, "boardEvent", [board])
+		
+	pass
 	
+func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
+	if event is InputEventMouseButton and event.is_action("pan"):
+		if event.is_pressed():
+			var p = get_parent().get_node("Pivot")
+			move.interpolate_property(p, "transform:origin:x", null, board.transform.origin.x, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+			move.interpolate_property(p, "transform:origin:z", null, board.transform.origin.z, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+			move.start()
 	pass
 	
 	
@@ -42,3 +53,7 @@ func _on_xspacing_value_changed(value):
 func _on_zspacing_value_changed(value):
 	zspacing = value
 	changeLayout(xspacing, zspacing)
+
+
+func _on_CheckBox_toggled(button_pressed):
+	get_tree().set_group("Board", "billboard", button_pressed)
