@@ -6,6 +6,8 @@ export var xspacing:float = 0
 
 onready var move:Tween = get_parent().get_node("Move")
 
+onready var selectedBoard:Spatial = get_child(2)
+
 func _ready():
 	
 	for b in range(get_child_count()):
@@ -18,11 +20,14 @@ func _ready():
 		var area:Area = board.get_node("Area")
 		area.connect("input_event", self, "boardEvent", [board])
 		
+	#get_tree().call_group("Letter", "setColour", Color(0.307159, 0.714844, 0.341133))
+		
 	pass
 	
 func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 	if event is InputEventMouseButton and event.is_action("pan"):
-		if event.is_pressed():
+		if event.doubleclick:
+			selectedBoard = board
 			var p = get_parent().get_node("Pivot")
 			move.interpolate_property(p, "transform:origin:x", null, board.transform.origin.x, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			move.interpolate_property(p, "transform:origin:z", null, board.transform.origin.z, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)

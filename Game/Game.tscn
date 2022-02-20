@@ -1,35 +1,42 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Board/BoardSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/3DGrid.gd" type="Script" id=2]
 [ext_resource path="res://Game/Camera.gd" type="Script" id=3]
 [ext_resource path="res://Misc/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Game/Game.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 
 [node name="Game" type="Node"]
+script = ExtResource( 5 )
+correct = Color( 0.235294, 0.796078, 0.258824, 1 )
+misplaced = Color( 0.898039, 0.886275, 0.12549, 1 )
+incorrect = Color( 0.262745, 0.262745, 0.262745, 1 )
 
 [node name="Move" type="Tween" parent="."]
 
 [node name="3DGrid" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
-[node name="BoardSprite" parent="3DGrid" instance=ExtResource( 1 )]
+[node name="0" parent="3DGrid" instance=ExtResource( 1 )]
 
-[node name="BoardSprite2" parent="3DGrid" instance=ExtResource( 1 )]
+[node name="1" parent="3DGrid" instance=ExtResource( 1 )]
 
-[node name="BoardSprite3" parent="3DGrid" instance=ExtResource( 1 )]
+[node name="2" parent="3DGrid" instance=ExtResource( 1 )]
 
-[node name="BoardSprite4" parent="3DGrid" instance=ExtResource( 1 )]
+[node name="3" parent="3DGrid" instance=ExtResource( 1 )]
 
-[node name="BoardSprite5" parent="3DGrid" instance=ExtResource( 1 )]
+[node name="4" parent="3DGrid" instance=ExtResource( 1 )]
+
+[node name="5" parent="3DGrid" instance=ExtResource( 1 )]
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -44,8 +51,8 @@ script = ExtResource( 3 )
 [node name="PanelContainer" type="PanelContainer" parent="UI"]
 margin_right = 150.0
 margin_bottom = 100.0
-theme = SubResource( 3 )
-custom_styles/panel = SubResource( 1 )
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

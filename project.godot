@@ -8,11 +8,37 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "GridContainer",
+"class": "Grid",
+"language": "GDScript",
+"path": "res://Board/Grid.gd"
+}, {
+"base": "Label",
+"class": "Letter",
+"language": "GDScript",
+"path": "res://Board/Letter.gd"
+} ]
+_global_script_class_icons={
+"Grid": "",
+"Letter": ""
+}
+
 [application]
 
 config/name="Multidimensional Wordle"
 run/main_scene="res://Game/Game.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/unassigned_variable=false
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/void_assignment=false
+gdscript/warnings/function_may_yield=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
 
 [input]
 
