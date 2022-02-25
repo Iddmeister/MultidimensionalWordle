@@ -5,6 +5,8 @@ class_name Grid
 var currentLine:int = 0
 var currentChar:int = 0
 
+var complete:bool = false
+
 func isLetterEmpty():
 	return get_child((currentLine*5)+currentChar).text == ""
 
@@ -28,14 +30,19 @@ func addLetter(letter:String):
 	
 func enter():
 	
-	if currentLine >= 5:
-		return
+	if currentLine >= 6:
+		return false
 	
 	if not currentChar >= 4:
-		return
+		return false
 		
 	currentLine += 1
 	currentChar = 0
+	
+	if currentLine >= 6:
+		complete = true
+		
+	return true
 	
 	
 	pass
