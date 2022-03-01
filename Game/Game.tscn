@@ -73,56 +73,48 @@ margin_bottom = 176.0
 custom_constants/separation = 5
 alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 140.0
-margin_bottom = 27.0
-focus_mode = 0
-text = "Flat"
-align = 1
-
 [node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 32.0
+margin_top = 16.0
 margin_right = 140.0
-margin_bottom = 51.0
+margin_bottom = 35.0
 text = "X Spacing"
 align = 1
 
 [node name="xspacing" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 56.0
+margin_top = 40.0
 margin_right = 140.0
-margin_bottom = 72.0
+margin_bottom = 56.0
 min_value = -7.0
 max_value = 7.0
 
 [node name="Label2" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 77.0
+margin_top = 61.0
 margin_right = 140.0
-margin_bottom = 96.0
+margin_bottom = 80.0
 text = "Z Spacing"
 align = 1
 
 [node name="zspacing" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 101.0
+margin_top = 85.0
 margin_right = 140.0
-margin_bottom = 117.0
+margin_bottom = 101.0
 max_value = 7.0
 value = 1.0
 
 [node name="Center" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 122.0
+margin_top = 106.0
 margin_right = 140.0
-margin_bottom = 147.0
+margin_bottom = 131.0
 focus_mode = 0
 text = "Center Cam"
 
 [node name="Seed" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 152.0
+margin_top = 136.0
 margin_right = 140.0
-margin_bottom = 171.0
+margin_bottom = 155.0
 text = "Seed"
 align = 1
 
-[connection signal="toggled" from="UI/PanelContainer/MarginContainer/VBoxContainer/CheckBox" to="3DGrid" method="_on_CheckBox_toggled"]
 [connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/xspacing" to="3DGrid" method="_on_xspacing_value_changed"]
 [connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/zspacing" to="3DGrid" method="_on_zspacing_value_changed"]
 [connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/Center" to="." method="_on_Center_pressed"]

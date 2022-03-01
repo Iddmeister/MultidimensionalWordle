@@ -82,7 +82,3 @@ func _on_xspacing_value_changed(value):
 func _on_zspacing_value_changed(value):
 	zspacing = value
 	changeLayout(xspacing, zspacing)
-
-
-func _on_CheckBox_toggled(button_pressed):
-	get_tree().set_group("Board", "billboard", button_pressed)
