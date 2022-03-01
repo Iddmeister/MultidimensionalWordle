@@ -6,6 +6,7 @@ export var incorrect:Color
 
 export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
+export var gameSeed:int = -1
 
 var allowedWordsPath:String = "res://words/wordle-allowed-guesses.txt"
 var validSolutionWordsPath:String = "res://words/wordle-answers-alphabetical.txt"
@@ -22,6 +23,15 @@ var words:Dictionary = {
 
 
 func _ready():
+	
+	if gameSeed == -1:
+		randomize()
+		gameSeed = rand_range(0, 99999)
+		seed(gameSeed)
+	else:
+		seed(gameSeed)
+		
+	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 	
 	var f  = File.new()
 	
@@ -103,6 +113,11 @@ func _input(event):
 		elif letter in validLetters:
 			
 			addLetter(letter)
+			
+		elif event.is_action("center"):
+			$"3DGrid".moveCam($"3DGrid".selectedBoard)
+			
+			
 
 func submitWord():
 	
@@ -218,3 +233,7 @@ func checkWord(word:String, x:int, y:int):
 	#print("t: "+tWord+", x: "+answerX+", y: "+answerY)
 		
 	pass
+
+
+func _on_Center_pressed():
+	$"3DGrid".moveCam($"3DGrid".selectedBoard, true)

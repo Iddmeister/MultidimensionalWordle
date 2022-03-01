@@ -6,7 +6,7 @@ export var xspacing:float = 0
 
 onready var move:Tween = get_parent().get_node("Move")
 
-onready var selectedBoard:Spatial = get_child(2)
+onready var selectedBoard:Spatial = get_child(5)
 
 func _ready():
 	
@@ -20,18 +20,42 @@ func _ready():
 		var area:Area = board.get_node("Area")
 		area.connect("input_event", self, "boardEvent", [board])
 		
-	#get_tree().call_group("Letter", "setColour", Color(0.307159, 0.714844, 0.341133))
 		
-	pass
+	get_child(5).get_node("Viewport/Grid").selectLine(0)
+	
+	moveCam(selectedBoard, true)
+	selectedBoard.get_node("Back").get_active_material(0).albedo_color = selectedBoard.get_node("Viewport/Grid").selectedColor
+	
+func moveCam(board, rotate:bool=false):
+	var p = get_parent().get_node("Pivot")
+	move.interpolate_property(p, "transform:origin:x", null, board.transform.origin.x, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	move.interpolate_property(p, "transform:origin:z", null, board.transform.origin.z, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	if rotate:
+		move.interpolate_property(p, "rotation:x", null, 0, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+		move.interpolate_property(p, "rotation:y", null, 0, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+		p.get_child(0).x_angle = 0
+		p.get_child(0).y_angle = 0
+	move.start()
 	
 func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
-	if event is InputEventMouseButton and event.is_action("pan"):
-		if event.doubleclick:
+	if event is InputEventMouseButton and event.is_action("click"):
+		
+		if event.pressed:
 			selectedBoard = board
-			var p = get_parent().get_node("Pivot")
-			move.interpolate_property(p, "transform:origin:x", null, board.transform.origin.x, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-			move.interpolate_property(p, "transform:origin:z", null, board.transform.origin.z, speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-			move.start()
+			
+			for b in get_children():
+				b.get_node("Back").get_active_material(0).albedo_color = Color(0.058824, 0.058824, 0.058824)
+			
+			selectedBoard.get_node("Back").get_active_material(0).albedo_color = selectedBoard.get_node("Viewport/Grid").selectedColor
+			
+			var offset = min(int(((selectedBoard.transform.origin-pos).y)+3), 5)
+				
+			if not selectedBoard.get_node("Viewport/Grid").complete:
+				selectedBoard.get_node("Viewport/Grid").selectLine(offset)
+			else:
+				get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
+			
+			pass
 	pass
 	
 	
