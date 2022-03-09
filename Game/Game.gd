@@ -1,5 +1,6 @@
 extends Node
 
+export var completelyCorrect:Color
 export var correct:Color
 export var misplaced:Color
 export var incorrect:Color
@@ -30,6 +31,8 @@ func _ready():
 		seed(gameSeed)
 	else:
 		seed(gameSeed)
+		
+	print(gameSeed)
 		
 	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 	
@@ -116,6 +119,8 @@ func _input(event):
 			
 		elif event.is_action("center"):
 			$"3DGrid".moveCam($"3DGrid".selectedBoard)
+		elif event.is_action("rotCam"):
+			$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
 			
 			
 
@@ -124,7 +129,7 @@ func submitWord():
 	var board = $"3DGrid".selectedBoard
 	var grid:Grid = board.get_node("Viewport/Grid")
 	
-	if grid.complete:
+	if grid.complete or board.name == "Answer":
 		return
 		
 	if grid.currentChar < 4 or grid.isLetterEmpty():
@@ -151,14 +156,14 @@ func addLetter(letter:String):
 	
 	var board = $"3DGrid".selectedBoard
 	var grid = board.get_node("Viewport/Grid")
-	if grid.complete:
+	if grid.complete or board.name == "Answer":
 		return
 	grid.addLetter(letter)
 	
 func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1)):
 	var board = $"3DGrid".selectedBoard
 	var grid = board.get_node("Viewport/Grid")
-	if grid.complete:
+	if grid.complete or board.name == "Answer":
 		return
 	grid.setLetter(line, c, l, color)
 	
@@ -166,7 +171,7 @@ func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1)):
 func removeLetter():
 	var board = $"3DGrid".selectedBoard
 	var grid = board.get_node("Viewport/Grid")
-	if grid.complete:
+	if grid.complete or board.name == "Answer":
 		return
 	grid.removeLetter()
 	
@@ -175,12 +180,36 @@ func checkWord(word:String, x:int, y:int):
 	
 	var board = $"3DGrid".selectedBoard
 	var grid:Grid = board.get_node("Viewport/Grid")
-	if grid.complete:
+	if grid.complete or board.name == "Answer":
 		return
+	
 		
 	
 	var answerX = words.x[x]
 	var answerY = words.y[y]
+	
+	if word == answerX or word == answerY:
+		
+		for letter in range(word.length()):
+	
+			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)#completelyCorrect)
+			
+		if word == answerY:
+			
+			for letter in range(word.length()):
+				
+				grid.get_node("a"+String(letter)).text = word[letter].to_upper()
+				grid.get_node("a"+String(letter)).setColour(correct)
+				
+		if word == answerX:
+			
+			for letter in range(word.length()):
+				
+				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
+			
+			
+		return
 	
 	var tWord:String = word
 	

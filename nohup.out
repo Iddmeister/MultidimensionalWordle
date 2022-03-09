@@ -145,3 +145,52 @@ WARNING: load: Loaded resource as image file, this will not work on export: 'res
 libva error: /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so init failed
 Opening in existing browser session.
 [244660:244660:0100/000000.959739:ERROR:sandbox_linux.cc(376)] InitializeSandbox() called with multiple threads in process gpu-process.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+SCRIPT ERROR: GDScript::reload: Parse Error: ':' expected at end of line.
+   At: res://Game/Game.gd:122.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+55692

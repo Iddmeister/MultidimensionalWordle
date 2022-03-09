@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Board/Letter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Board/Grid.gd" type="Script" id=2]
@@ -273,52 +273,7 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=31]
-resource_local_to_scene = true
-bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=32]
-resource_local_to_scene = true
-bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=33]
-resource_local_to_scene = true
-bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=34]
-resource_local_to_scene = true
-bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=35]
-resource_local_to_scene = true
-bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 1, 1, 1, 1 )
-
-[node name="Grid" type="GridContainer"]
+[node name="AnswerGrid" type="GridContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/vseparation = 0
@@ -528,71 +483,3 @@ margin_top = 500.0
 margin_right = 500.0
 margin_bottom = 600.0
 custom_styles/normal = SubResource( 30 )
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-margin_top = 600.0
-margin_right = 100.0
-margin_bottom = 650.0
-custom_constants/margin_top = 50
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-margin_left = 100.0
-margin_top = 600.0
-margin_right = 200.0
-margin_bottom = 650.0
-custom_constants/margin_top = 50
-
-[node name="MarginContainer3" type="MarginContainer" parent="."]
-margin_left = 200.0
-margin_top = 600.0
-margin_right = 300.0
-margin_bottom = 650.0
-custom_constants/margin_top = 50
-
-[node name="MarginContainer4" type="MarginContainer" parent="."]
-margin_left = 300.0
-margin_top = 600.0
-margin_right = 400.0
-margin_bottom = 650.0
-custom_constants/margin_top = 50
-
-[node name="MarginContainer5" type="MarginContainer" parent="."]
-margin_left = 400.0
-margin_top = 600.0
-margin_right = 500.0
-margin_bottom = 650.0
-custom_constants/margin_top = 50
-
-[node name="a0" parent="." instance=ExtResource( 1 )]
-margin_top = 650.0
-margin_right = 100.0
-margin_bottom = 750.0
-custom_styles/normal = SubResource( 31 )
-
-[node name="a1" parent="." instance=ExtResource( 1 )]
-margin_left = 100.0
-margin_top = 650.0
-margin_right = 200.0
-margin_bottom = 750.0
-custom_styles/normal = SubResource( 32 )
-
-[node name="a2" parent="." instance=ExtResource( 1 )]
-margin_left = 200.0
-margin_top = 650.0
-margin_right = 300.0
-margin_bottom = 750.0
-custom_styles/normal = SubResource( 33 )
-
-[node name="a3" parent="." instance=ExtResource( 1 )]
-margin_left = 300.0
-margin_top = 650.0
-margin_right = 400.0
-margin_bottom = 750.0
-custom_styles/normal = SubResource( 34 )
-
-[node name="a4" parent="." instance=ExtResource( 1 )]
-margin_left = 400.0
-margin_top = 650.0
-margin_right = 500.0
-margin_bottom = 750.0
-custom_styles/normal = SubResource( 35 )
