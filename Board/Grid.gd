@@ -17,7 +17,7 @@ func selectLine(line:int):
 		
 		currentChar = c
 		if isLetterEmpty():
-			currentChar = min(4, currentChar)
+			currentChar = int(min(4, currentChar))
 			break
 	
 	get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
@@ -107,3 +107,14 @@ func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1)):
 	
 func getLetter(line:int, c:int):
 	return get_child((line*5)+c).text
+	
+func clear():
+	for letter in get_children():
+		if not letter is Letter:
+			continue
+		letter.text = ""
+		letter.setColour(letter.defaultColour)
+	complete = false
+	currentLine = 0
+	currentChar = 0
+	completedLines = []

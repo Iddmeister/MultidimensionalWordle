@@ -194,3 +194,694 @@ OpenGL ES Batching: ON
 /lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
  
 55692
+SCRIPT ERROR: GDScript::reload: Parse Error: Unexpected indentation.
+   At: res://Game/Game.gd:72.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: A non-void function must return a value in all possible paths.
+   At: res://Game/Game.gd:62.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+66339
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+ERROR: load_interactive: Cannot open file 'res://Board/AnswerGridX.tscn'.
+   At: scene/resources/resource_format_text.cpp:1232.
+ERROR: _load: Failed loading resource: res://Board/AnswerGridX.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:282.
+ERROR: load_interactive: Cannot open file 'res://Board/AnswerGridX.tscn'.
+   At: scene/resources/resource_format_text.cpp:1232.
+ERROR: _load: Failed loading resource: res://Board/AnswerGridX.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:282.
+WARNING: _parse_ext_resource: Couldn't load external resource: res://Board/AnswerGridX.tscn
+   At: scene/resources/resource_format_text.cpp:175.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+88759
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+SCRIPT ERROR: GDScript::reload: Parse Error: The method "has" isn't declared on base "String".
+   At: res://Game/Game.gd:28.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+193498380
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+177622
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+WARNING: set_enabled_focus_mode: BaseButton's Enabled Focus Mode property has been deprecated due to redundancy and will be removed in Godot 4.0. Please use Control.set_focus_mode instead.
+   At: scene/gui/base_button.cpp:329.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+ 
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_stealGodot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+SCRIPT ERROR: GDScript::reload: Parse Error: Error parsing expression, misplaced: '\n'
+   At: res://Game/Game.gd:28.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The identifier "pas" isn't declared in the current scope.
+   At: res://Board/Grid.gd:113.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+SCRIPT ERROR: GDScript::reload: Parse Error: The identifier "pas" isn't declared in the current scope.
+   At: res://Board/Grid.gd:115.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+ERROR: get_token_identifier: Condition "tk_rb[ofs].type != TK_IDENTIFIER" is true. Returned: StringName()
+   At: modules/gdscript/gdscript_tokenizer.cpp:1129.
+SCRIPT ERROR: GDScript::reload: Parse Error: Expected indented block after "for".
+   At: res://Board/Grid.gd:115.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The assigned value's type (int) doesn't match the variable's type (Array).
+   At: res://Board/Grid.gd:118.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The identifier "selectedBoard" isn't declared in the current scope.
+   At: res://Game/Game.gd:33.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+6163
+SCRIPT ERROR: GDScript::reload: Parse Error: Too few arguments for "reset()" call. Expected at least 1.
+   At: res://Game/Game.gd:291.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: Expected an indented block after "if".
+   At: res://Game/Game.gd:293.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: Too few arguments for "reset()" call. Expected at least 1.
+   At: res://Game/Game.gd:293.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: Too few arguments for "reset()" call. Expected at least 1.
+   At: res://Game/Game.gd:292.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: Too few arguments for "reset()" call. Expected at least 1.
+   At: res://Game/Game.gd:293.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The assigned value's type (String) doesn't match the variable's type (int).
+   At: res://Game/Game.gd:292.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The assigned expression's type (int) doesn't match the variable's type (String).
+   At: res://Game/Game.gd:10.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: Invalid operand types ("String" and "int") to operator "==".
+   At: res://Game/Game.gd:39.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The assigned value's type (int) doesn't match the variable's type (String).
+   At: res://Game/Game.gd:41.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: At "generateAnswers()" call, argument 1. The passed argument's type (String) doesn't match the function's expected argument type (int).
+   At: res://Game/Game.gd:48.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The method "has" isn't declared on base "String".
+   At: res://Game/Game.gd:48.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: At "reset()" call, argument 1. The passed argument's type (String) doesn't match the function's expected argument type (int).
+   At: res://Game/Game.gd:293.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: At "generateAnswers()" call, argument 1. The passed argument's type (String) doesn't match the function's expected argument type (int).
+   At: res://Game/Game.gd:48.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: At "reset()" call, argument 1. The passed argument's type (String) doesn't match the function's expected argument type (int).
+   At: res://Game/Game.gd:293.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+87619
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+7318
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+27314
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+20085
+45780
+44299
+7854
+14702
+hello
+18266
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+hello
+18266
+hello
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+261238937
+261238937
+261238937
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+261238937
+261238937
+261238937
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+261238937
+261238937
+261238937
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+261238937
+261238937
+261238937
+SCRIPT ERROR: GDScript::reload: Parse Error: The method "has" isn't declared on base "String".
+   At: res://Game/Game.gd:73.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+200225902
+261238937
+hello
+261238937
+hello
+261238937
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+200016784
+261238937
+hello
+261238937
+hello
+SCRIPT ERROR: GDScript::reload: Parse Error: The method "has" isn't declared on base "String".
+   At: res://Game/Game.gd:41.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+1.771788
+1.771788
+196419914
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+1.771788
+1.771788
+199009460
+_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0.0.1:6007 --allow_focus_steal_pid 258104 --position 128,60
+Running: /usr/local/bin/godot --path /home/iddmeister/Projects/MultidimensionalWordle --remote-debug 127.0Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+[a, d, b, c]
+[a, c, d, b]
+199078959
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+196602769
+261238937
+hello
+261238937
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+196565575
+261238937
+hello
+261238937
+hello
+SCRIPT ERROR: GDScript::reload: Parse Error: The identifier "validSolutions" isn't declared in the current scope.
+   At: res://Game/Game.gd:72.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+a
+a
+201344376
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+a
+a
+2088546716
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+a
+a
+195305608
+{x:[trick, gloat, scant, ennui, flown, idiom], y:[rarer, denim, mangy, shale, ovine, flout]}
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+a
+a
+197817073
+{x:[stump, aglow, bough, folly, brute, style], y:[droop, filmy, gecko, agate, watch, cubic]}
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+SCRIPT ERROR: GDScript::reload: Parse Error: Expected end of statement after expression, got ')' instead.
+   At: res://Game/Game.gd:45.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+SCRIPT ERROR: GDScript::reload: Parse Error: The method "has" isn't declared on base "String".
+   At: res://Game/Game.gd:77.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+200230328
+{x:[noisy, amble, spook, snort, hinge, mirth], y:[aloof, altar, folio, cloud, spied, scarf]}
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+198786185
+{x:[sheik, ample, leper, lunar, lever, salvo], y:[curio, afoul, false, unlit, optic, chart]}
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+198822151
+{x:[coast, nurse, total, goofy, delay, grief], y:[limit, roast, gaudy, goose, junta, cubic]}
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+194041305
+{x:[clean, robin, erode, stoop, forge, serum], y:[tread, felon, spurt, cloud, admin, moist]}
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+197607912
+{x:[gaily, siege, bayou, naive, tight, fudge], y:[cocoa, wider, gorge, dread, light, baker]}
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+261238937
+{x:[crepe, pansy, folly, cried, prime, mammy], y:[hovel, theme, ankle, tease, pause, filth]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+196594127
+{x:[other, flown, token, tease, usurp, cubic], y:[trend, snuck, diver, recap, creed, biddy]}
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+197636266
+{x:[jelly, manor, press, guile, meter, stout], y:[study, vouch, roast, chase, alloy, easel]}
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+261238937
+{x:[climb, filmy, glove, arose, piece, penny], y:[scrub, gripe, elate, macho, party, tabby]}
+hello
+196595042
+{x:[field, omega, relax, spiel, scold, debut], y:[dicey, dross, cried, louse, bacon, boule]}
+35230
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+iddon
+IDDON
+2985
+42197
+ERROR: get_token_literal: Failed to get token literal.
+   At: modules/gdscript/gdscript_tokenizer.cpp:360.
+ERROR: get_token_literal: Failed to get token literal.
+   At: modules/gdscript/gdscript_tokenizer.cpp:360.
+ERROR: get_token_literal: Failed to get token literal.
+   At: modules/gdscript/gdscript_tokenizer.cpp:360.
+SCRIPT ERROR: GDScript::reload: Parse Error: The identifier "selectedBoard" isn't declared in the current scope.
+   At: res://Game/Game.gd:37.
+ERROR: reload: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:585.
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+75887
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+20950
+5489
+60976
+58734
+iddon
+Godot Engine v3.3.3.stable.official.b973f997f - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) HD Graphics 4400 (HSW GT2)
+OpenGL ES Batching: ON
+/lib/x86_64-linux-gnu/libasound.so.2: undefined symbol: snd_dlpath
+ 
+hello

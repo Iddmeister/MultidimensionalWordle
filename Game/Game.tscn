@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Board/BoardSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/3DGrid.gd" type="Script" id=2]
@@ -15,6 +15,18 @@ default_font = SubResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.239216, 0.227451, 0.270588, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 
 [node name="Game" type="Node"]
 script = ExtResource( 5 )
@@ -64,7 +76,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
 margin_right = 150.0
-margin_bottom = 149.0
+margin_bottom = 179.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -74,51 +86,147 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 145.0
-margin_bottom = 144.0
+margin_bottom = 174.0
 custom_constants/separation = 5
 alignment = 1
 
-[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Center" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 140.0
-margin_bottom = 19.0
+margin_bottom = 25.0
+focus_mode = 0
+text = "Center Cam"
+
+[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 140.0
+margin_bottom = 49.0
 text = "X Spacing"
 align = 1
 
 [node name="xspacing" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 24.0
+margin_top = 54.0
 margin_right = 140.0
-margin_bottom = 40.0
+margin_bottom = 70.0
 min_value = -7.0
 max_value = 7.0
 
 [node name="Label2" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 45.0
+margin_top = 75.0
 margin_right = 140.0
-margin_bottom = 64.0
+margin_bottom = 94.0
 text = "Z Spacing"
 align = 1
 
 [node name="zspacing" type="HSlider" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 69.0
+margin_top = 99.0
 margin_right = 140.0
-margin_bottom = 85.0
+margin_bottom = 115.0
 max_value = 7.0
 value = 1.0
 
-[node name="Center" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 90.0
-margin_right = 140.0
-margin_bottom = 115.0
-focus_mode = 0
-text = "Center Cam"
-
-[node name="Seed" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="New" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 120.0
 margin_right = 140.0
-margin_bottom = 139.0
+margin_bottom = 145.0
+focus_mode = 0
+text = "New Game"
+
+[node name="Seed" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 150.0
+margin_right = 140.0
+margin_bottom = 169.0
 text = "Seed"
 align = 1
 
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.707092
+margin_right = -0.707092
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGamePopup" type="PopupPanel" parent="UI/CenterContainer"]
+margin_left = 362.0
+margin_top = 200.0
+margin_right = 662.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 300, 200 )
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/NewGamePopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
+margin_top = 17.0
+margin_right = 280.0
+margin_bottom = 58.0
+text = "Are you sure you want to start a new game?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
+margin_top = 78.0
+margin_right = 280.0
+margin_bottom = 107.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer"]
+margin_left = 16.0
+margin_top = 5.0
+margin_right = 154.0
+margin_bottom = 24.0
+text = "New Game Seed:"
+
+[node name="Seed" type="LineEdit" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer"]
+margin_left = 164.0
+margin_right = 264.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 1
+max_length = 5
+placeholder_text = "Random"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
+margin_top = 127.0
+margin_right = 280.0
+margin_bottom = 152.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Cancel" type="Button" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2"]
+margin_right = 130.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="Start" type="Button" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2"]
+margin_left = 150.0
+margin_right = 280.0
+margin_bottom = 25.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "I'm Sure"
+
+[connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/Center" to="." method="_on_Center_pressed"]
 [connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/xspacing" to="3DGrid" method="_on_xspacing_value_changed"]
 [connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/zspacing" to="3DGrid" method="_on_zspacing_value_changed"]
-[connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/Center" to="." method="_on_Center_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Start" to="." method="_on_Start_pressed"]

@@ -7,13 +7,14 @@ export var incorrect:Color
 
 export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
-export var gameSeed:int = -1
+export var gameSeed:String = ""
 
 var allowedWordsPath:String = "res://words/wordle-allowed-guesses.txt"
 var validSolutionWordsPath:String = "res://words/wordle-answers-alphabetical.txt"
 var allowedWords:Array = []
 
 var validLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 
 var words:Dictionary = {
 	
@@ -22,64 +23,38 @@ var words:Dictionary = {
 	
 }
 
+func reset(s:String):
+	
+	words = generateAnswers(s)
+	
+	get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
+	
+	for board in $"3DGrid".get_children():
+		board.get_node("Viewport/Grid").clear()
+		board.get_node("Back").get_active_material(0).albedo_color = Color(0.058824, 0.058824, 0.058824)
+		
+	$"3DGrid".selectedBoard = $"3DGrid".get_child(6)
+	$"3DGrid".selectedBoard.get_node("Viewport/Grid").selectLine(0)
+	$"3DGrid".selectedBoard.get_node("Back").get_active_material(0).albedo_color = $"3DGrid".selectedBoard.get_node("Viewport/Grid").selectedColor
+	
+	pass
 
 func _ready():
 	
-	if gameSeed == -1:
+	if gameSeed == "":
 		randomize()
-		gameSeed = rand_range(0, 99999)
-		seed(gameSeed)
-	else:
-		seed(gameSeed)
-		
-	print(gameSeed)
+		gameSeed = String(int(rand_range(0, 99999)))
 		
 	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 	
-	var f  = File.new()
-	
 	if randomizeWords:
-		
-		var validSolutions = []
-		
-		f.open(validSolutionWordsPath, File.READ)
-		
-		while not f.eof_reached():
-			validSolutions.append(f.get_line())
-			
-		f.close()
-		
-		words.x = []
-		words.y = []
-
-		var i = 0
-
-		while i < 6:
-			
-			validSolutions.shuffle()
-			var w = validSolutions[0]
-			
-			if not w in words.x:
-				words.x.append(w)
-				i += 1
-				
-		i = 0
-				
-		while i < 6:
-			
-			validSolutions.shuffle()
-			var w = validSolutions[0]
-			
-			if not w in words.x and not w in words.y:
-				words.y.append(w)
-				i += 1
-				
-		#print(words)
-			
+		words = generateAnswers(gameSeed)
 		
 	
 	if not onlyAllowedGuesses:
 		return
+		
+	var f = File.new()
 
 	f.open(allowedWordsPath, File.READ)
 
@@ -95,8 +70,50 @@ func _ready():
 		
 	f.close()
 	
+	
+	
+func generateAnswers(s:String) -> Dictionary:
+	
+	seed(s.hash())
+	
+	var newWords:Dictionary = {"x":[], "y":[]}
+	
+	var f  = File.new()
+	
+		
+	var validSolutions = []
+	
+	f.open(validSolutionWordsPath, File.READ)
+	
+	while not f.eof_reached():
+		validSolutions.append(f.get_line())
+		
+	f.close()
 
-func _input(event):
+	var i = 0
+
+	while i < 6:
+		
+		var w = validSolutions[int(rand_range(0, validSolutions.size()))]
+		
+		if not w in newWords.x:
+			newWords.x.append(w)
+			i += 1
+			
+	i = 0
+			
+	while i < 6:
+		
+		var w = validSolutions[int(rand_range(0, validSolutions.size()))]
+		
+		if not w in newWords.x and not w in newWords.y:
+			newWords.y.append(w)
+			i += 1
+			
+	return newWords
+	
+
+func _unhandled_key_input(event):
 	
 	if event is InputEventKey:
 		
@@ -266,3 +283,28 @@ func checkWord(word:String, x:int, y:int):
 
 func _on_Center_pressed():
 	$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
+
+
+func _on_New_pressed():
+	$UI/CenterContainer/NewGamePopup.popup()
+
+
+func _on_Start_pressed():
+	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text == "":
+		randomize()
+		gameSeed = String(int(rand_range(0, 99999)))
+		reset(gameSeed)
+	else:
+		gameSeed = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text
+		reset(gameSeed)
+		
+	print(gameSeed)
+	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
+		
+	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text = ""
+		
+	$UI/CenterContainer/NewGamePopup.hide()
+		
+
+func _on_Cancel_pressed():
+	$UI/CenterContainer/NewGamePopup.hide()

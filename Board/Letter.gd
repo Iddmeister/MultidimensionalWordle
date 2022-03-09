@@ -3,6 +3,7 @@ extends Label
 class_name Letter
 
 onready var panel:StyleBoxFlat = get_stylebox("normal")
+onready var defaultColour:Color = panel.bg_color
 
 func setColour(color:Color):
 	
