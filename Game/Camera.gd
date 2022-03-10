@@ -5,6 +5,7 @@ export var y_sensitivity:float = 0.003
 export var zoom_amount:float = 3
 export var zoom_speed:float = 0.2
 export var clickSensitivity:float = 1.5
+export var rotWithLeftClick:bool = true
 
 var x_angle:float
 var y_angle:float
@@ -15,9 +16,9 @@ func _unhandled_input(event):
 		
 
 		
-		if Input.is_action_pressed("click") or Input.is_action_pressed("pan"):
+		if (Input.is_action_pressed("click") and rotWithLeftClick) or Input.is_action_pressed("pan"):
 			
-			if Input.is_action_pressed("click"):
+			if Input.is_action_pressed("click") and rotWithLeftClick:
 				if event.relative.length() > clickSensitivity:
 					get_parent().get_parent().get_node("3DGrid").panning = true
 				
