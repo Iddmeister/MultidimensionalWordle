@@ -134,7 +134,7 @@ func _unhandled_key_input(event):
 			
 			addLetter(letter)
 			
-		elif event.is_action("center"):
+		if event.is_action("center"):
 			$"3DGrid".moveCam($"3DGrid".selectedBoard)
 		elif event.is_action("rotCam"):
 			$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
