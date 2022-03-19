@@ -4,6 +4,7 @@ export var completelyCorrect:Color
 export var correct:Color
 export var misplaced:Color
 export var incorrect:Color
+export var resigned:Color
 
 export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
@@ -15,11 +16,21 @@ var allowedWords:Array = []
 
 var validLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+#var numberOfWords = 0
+var gameOver:bool = false
+
 
 var words:Dictionary = {
 	
 	"x":["HELLO", "SOLVE", "GLAZE", "FLUFF", "SCRUB", "ROUGH"],
 	"y":["VEGAN", "STALK", "GRIPE", "BROOD", "FIRED", "PULSE"],
+	
+}
+
+var wordsCorrect:Dictionary = {
+	
+	"x":[false, false, false, false, false, false],
+	"y":[false, false, false, false, false, false],
 	
 }
 
@@ -142,33 +153,38 @@ func _unhandled_key_input(event):
 			
 
 func submitWord():
-	
-	var board = $"3DGrid".selectedBoard
-	var grid:Grid = board.get_node("Viewport/Grid")
-	
-	if grid.complete or board.name == "Answer":
-		return
+	if gameOver == true:
+		pass
+	else:
+		var board = $"3DGrid".selectedBoard
+		var grid:Grid = board.get_node("Viewport/Grid")
 		
-	if grid.currentChar < 4 or grid.isLetterEmpty():
-		return
-	
-	var word:String
-	
-	for l in range(5):
-		
-		word += grid.getLetter(grid.currentLine, l)
-		
-		
-		
-	if onlyAllowedGuesses:
-		if not (word.to_lower() in allowedWords):
+		if grid.complete or board.name == "Answer":
 			return
-	
-	checkWord(word.to_lower(), grid.currentLine, int(board.name))
-	grid.enter()
-	
-	pass
-	
+			
+		if grid.currentChar < 4 or grid.isLetterEmpty():
+			return
+		
+		var word:String
+		
+		for l in range(5):
+			
+			word += grid.getLetter(grid.currentLine, l)
+			
+			
+			
+		if onlyAllowedGuesses:
+			if not (word.to_lower() in allowedWords):
+				return
+		
+		checkWord(word.to_lower(), grid.currentLine, int(board.name))
+		grid.enter()
+		
+		#if :
+		#	_on_Resign_pressed()
+		
+		pass
+		
 func addLetter(letter:String):
 	
 	var board = $"3DGrid".selectedBoard
@@ -213,6 +229,8 @@ func checkWord(word:String, x:int, y:int):
 			
 		if word == answerY:
 			
+			wordsCorrect["y"][y] = true
+			
 			for letter in range(word.length()):
 				
 				grid.get_node("a"+String(letter)).text = word[letter].to_upper()
@@ -220,11 +238,16 @@ func checkWord(word:String, x:int, y:int):
 				
 		if word == answerX:
 			
+			wordsCorrect["x"][x] = true
+			
 			for letter in range(word.length()):
 				
 				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
 				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
 			
+		#numberOfWords += 1
+		#if numberOfWords == 36:
+		#	_on_Resign_pressed()
 			
 		return
 	
@@ -277,6 +300,10 @@ func checkWord(word:String, x:int, y:int):
 				setLetter(grid.currentLine, letter, word[letter].to_upper(), incorrect)
 		
 	#print("t: "+tWord+", x: "+answerX+", y: "+answerY)
+	
+	#numberOfWords += 1
+	#if numberOfWords == 36:
+	#	_on_Resign_pressed()
 		
 	pass
 
@@ -298,6 +325,12 @@ func _on_Start_pressed():
 		gameSeed = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text
 		reset(gameSeed)
 		
+	gameOver = false
+	#numberOfWords = 0
+	var wordsCorrect:Dictionary = {
+		"x":[false, false, false, false, false, false],
+		"y":[false, false, false, false, false, false],
+	}
 	print(gameSeed)
 	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 		
@@ -308,3 +341,38 @@ func _on_Start_pressed():
 
 func _on_Cancel_pressed():
 	$UI/CenterContainer/NewGamePopup.hide()
+	
+
+func _on_Resign_pressed():
+	
+	gameOver = true
+	
+	for depth in range(6):
+		for dimension in "xy":
+			if wordsCorrect[dimension][depth] == true:
+				pass
+			else:
+				if dimension == "x":
+					for letter in range((words[dimension][depth]).length()):
+				
+						var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+						answerGrid.setLetter((depth), letter, words[dimension][depth][letter].to_upper(), resigned)
+						#(get_node("3DGrid/Answer/a"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words[dimension][depth][letter].to_upper()
+						#(get_node("3DGrid/Answer/a"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(resigned)
+						#pass
+				else:
+					for letter in range((words[dimension][depth]).length()):
+						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words[dimension][depth][letter].to_upper()
+						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(resigned)
+			
+	
+#	for letter in range(word.length()):
+#				
+#		grid.get_node("a"+String(letter)).text = word[letter].to_upper()
+#		grid.get_node("a"+String(letter)).setColour(resigned)
+#		
+#	for letter in range(word.length()):
+#				
+#				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+#				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), resigned)
+#

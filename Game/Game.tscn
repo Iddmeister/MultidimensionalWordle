@@ -34,6 +34,7 @@ completelyCorrect = Color( 0, 0.623529, 1, 1 )
 correct = Color( 0.235294, 0.796078, 0.258824, 1 )
 misplaced = Color( 0.898039, 0.886275, 0.12549, 1 )
 incorrect = Color( 0.403922, 0.403922, 0.403922, 1 )
+resigned = Color( 1, 0.0509804, 0.0509804, 1 )
 
 [node name="Move" type="Tween" parent="."]
 
@@ -76,7 +77,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
 margin_right = 150.0
-margin_bottom = 179.0
+margin_bottom = 209.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -86,7 +87,7 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 145.0
-margin_bottom = 174.0
+margin_bottom = 204.0
 custom_constants/separation = 5
 alignment = 1
 
@@ -139,6 +140,13 @@ margin_right = 140.0
 margin_bottom = 169.0
 text = "Seed"
 align = 1
+
+[node name="Reveal" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 140.0
+margin_bottom = 199.0
+focus_mode = 0
+text = "Reveal Words"
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 anchor_right = 1.0
@@ -230,5 +238,6 @@ text = "I'm Sure"
 [connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/xspacing" to="3DGrid" method="_on_xspacing_value_changed"]
 [connection signal="value_changed" from="UI/PanelContainer/MarginContainer/VBoxContainer/zspacing" to="3DGrid" method="_on_zspacing_value_changed"]
 [connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/Reveal" to="." method="_on_Resign_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Start" to="." method="_on_Start_pressed"]
