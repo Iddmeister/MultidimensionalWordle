@@ -182,9 +182,6 @@ func submitWord():
 		checkWord(word.to_lower(), grid.currentLine, int(board.name))
 		grid.enter()
 		
-		#if :
-		#	_on_Resign_pressed()
-		
 		pass
 		
 func addLetter(letter:String):
@@ -247,9 +244,6 @@ func checkWord(word:String, x:int, y:int):
 				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
 				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
 			
-		#numberOfWords += 1
-		#if numberOfWords == 36:
-		#	_on_Resign_pressed()
 		updateRevealButton(y,x)
 			
 		return
@@ -306,18 +300,13 @@ func checkWord(word:String, x:int, y:int):
 	
 	updateRevealButton(y,x)
 	
-	#pass
-	#	_on_Resign_pressed()
-		
-	#pass
-
+	pass
 
 func updateRevealButton(y,x):
 	if (not false in wordsCorrect["x"]) and (not false in wordsCorrect["y"]):
 		get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").hide()
 	else:
 		wordsEntered[y][x] = true
-		print(wordsEntered)
 		for gridNumber in range(6):
 			for rowNumber in range(6):
 				if wordsEntered[rowNumber][gridNumber] == false:
@@ -346,7 +335,6 @@ func _on_Start_pressed():
 		reset(gameSeed)
 		
 	gameOver = false
-	#numberOfWords = 0
 	wordsCorrect = {
 		"x":[false, false, false, false, false, false],
 		"y":[false, false, false, false, false, false],
@@ -382,22 +370,9 @@ func _on_Resign_pressed():
 				
 						var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
 						answerGrid.setLetter((depth), letter, words[dimension][depth][letter].to_upper(), resigned)
-						#(get_node("3DGrid/Answer/a"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words[dimension][depth][letter].to_upper()
-						#(get_node("3DGrid/Answer/a"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(resigned)
-						#pass
 				else:
 					for letter in range((words[dimension][depth]).length()):
 						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words[dimension][depth][letter].to_upper()
 						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(resigned)
 			
 	
-#	for letter in range(word.length()):
-#				
-#		grid.get_node("a"+String(letter)).text = word[letter].to_upper()
-#		grid.get_node("a"+String(letter)).setColour(resigned)
-#		
-#	for letter in range(word.length()):
-#				
-#				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
-#				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), resigned)
-#
