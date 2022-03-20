@@ -150,6 +150,8 @@ func _unhandled_key_input(event):
 		if event.is_action("center"):
 			$"3DGrid".moveCam($"3DGrid".selectedBoard)
 		elif event.is_action("rotCam"):
+			$"3DGrid".moveCam($"3DGrid".selectedBoard)
+			yield(get_tree().create_timer(0), "timeout")
 			$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
 			
 			
@@ -317,7 +319,10 @@ func updateRevealButton(y,x):
 			if gridNumber == 5:
 					get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Reveal Words"
 
+
 func _on_Center_pressed():
+	$"3DGrid".moveCam($"3DGrid".selectedBoard)
+	yield(get_tree().create_timer(0), "timeout")
 	$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
 
 
