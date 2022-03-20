@@ -5,7 +5,7 @@ export var y_sensitivity:float = 0.003
 export var zoom_amount:float = 3
 export var zoom_speed:float = 0.2
 export var clickSensitivity:float = 1.5
-export var rotWithLeftClick:bool = true
+export var rotWithLeftClick:bool = false
 
 var x_angle:float
 var y_angle:float

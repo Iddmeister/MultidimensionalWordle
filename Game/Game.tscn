@@ -146,7 +146,7 @@ margin_top = 174.0
 margin_right = 140.0
 margin_bottom = 199.0
 focus_mode = 0
-text = "Reveal Words"
+text = "Give Up"
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 anchor_right = 1.0

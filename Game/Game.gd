@@ -16,7 +16,7 @@ var allowedWords:Array = []
 
 var validLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-#var numberOfWords = 0
+var numberCorrect = 0
 var gameOver:bool = false
 
 
@@ -33,6 +33,8 @@ var wordsCorrect:Dictionary = {
 	"y":[false, false, false, false, false, false],
 	
 }
+
+var wordsEntered:Array = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
 
 func reset(s:String):
 	
@@ -248,6 +250,7 @@ func checkWord(word:String, x:int, y:int):
 		#numberOfWords += 1
 		#if numberOfWords == 36:
 		#	_on_Resign_pressed()
+		updateRevealButton(y,x)
 			
 		return
 	
@@ -301,12 +304,29 @@ func checkWord(word:String, x:int, y:int):
 		
 	#print("t: "+tWord+", x: "+answerX+", y: "+answerY)
 	
-	#numberOfWords += 1
-	#if numberOfWords == 36:
+	updateRevealButton(y,x)
+	
+	#pass
 	#	_on_Resign_pressed()
 		
-	pass
+	#pass
 
+
+func updateRevealButton(y,x):
+	if (not false in wordsCorrect["x"]) and (not false in wordsCorrect["y"]):
+		get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").hide()
+	else:
+		wordsEntered[y][x] = true
+		print(wordsEntered)
+		for gridNumber in range(6):
+			for rowNumber in range(6):
+				if wordsEntered[rowNumber][gridNumber] == false:
+					if wordsCorrect["x"][gridNumber] and wordsCorrect["y"][rowNumber]:
+						pass
+					else:
+						return
+			if gridNumber == 5:
+					get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Reveal Words"
 
 func _on_Center_pressed():
 	$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
@@ -327,10 +347,14 @@ func _on_Start_pressed():
 		
 	gameOver = false
 	#numberOfWords = 0
-	var wordsCorrect:Dictionary = {
+	wordsCorrect = {
 		"x":[false, false, false, false, false, false],
 		"y":[false, false, false, false, false, false],
 	}
+	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
+	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Give Up"
+	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").show()
+	
 	print(gameSeed)
 	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 		
@@ -346,6 +370,7 @@ func _on_Cancel_pressed():
 func _on_Resign_pressed():
 	
 	gameOver = true
+	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").hide()
 	
 	for depth in range(6):
 		for dimension in "xy":
