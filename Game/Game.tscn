@@ -60,6 +60,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788, 0 )
 [node name="Camera" type="Camera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5107 )
 script = ExtResource( 3 )
+rotWithLeftClick = true
 
 [node name="Zoom" type="Tween" parent="Pivot/Camera"]
 
