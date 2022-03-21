@@ -15,7 +15,9 @@ resource_local_to_scene = true
 material = SubResource( 2 )
 size = Vector3( 5.3, 6.3, 0.2 )
 
-[node name="BoardSprite" type="Sprite3D" groups=["Board"]]
+[node name="BoardSprite" type="Sprite3D" groups=[
+"Board",
+]]
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 500, 600 )
