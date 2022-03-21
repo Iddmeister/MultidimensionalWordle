@@ -8,6 +8,8 @@ onready var move:Tween = get_parent().get_node("Move")
 
 onready var selectedBoard:Spatial = get_child(6)
 
+signal selectedLine(grid, line)
+
 func _ready():
 	
 	for b in range(get_child_count()):
@@ -42,6 +44,10 @@ var panning:bool = false
 func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 	if event is InputEventMouseButton and event.is_action("click") and not panning and not event.pressed:
 		
+		
+		if board.name == "Answer":
+			return
+		
 		selectedBoard = board
 		
 		for b in get_children():
@@ -51,9 +57,9 @@ func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 		
 		var offset = min(int(((selectedBoard.get_node("Area").transform.origin-pos).y)+3), 5)
 		
-		
 		if not selectedBoard.get_node("Viewport/Grid").complete and not selectedBoard.name == "Answer":
 			selectedBoard.get_node("Viewport/Grid").selectLine(offset)
+			emit_signal("selectedLine", selectedBoard.get_node("Viewport/Grid"), offset)
 		else:
 			get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
 		

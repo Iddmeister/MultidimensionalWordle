@@ -26,6 +26,25 @@ func selectLine(line:int):
 		get_child((line*5)+l).call_deferred("setBorder", selectedColor)
 	
 	pass
+	
+func getLineLetters(line:int) -> Array:
+	
+	var letters = []
+	
+	for l in range(5):
+		letters.append(get_child((line*5)+l))
+		
+	return letters
+	
+func getLetters() -> Array:
+	
+	var letters = []
+	
+	for l in range(30):
+		letters.append(get_child(l))
+		
+	return letters
+	
 
 func isLetterEmpty():
 	return get_child((currentLine*5)+currentChar).text == ""
@@ -94,11 +113,12 @@ func enter():
 	
 	pass
 
-func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1)):
+func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1), state:int=0):
 	
 	var letter = get_child((line*5)+c)
 	
 	letter.text = l
+	letter.state = state
 	
 	if not color == Color(1, 1, 1 ,1):
 		letter.setColour(color)

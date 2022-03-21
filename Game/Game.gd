@@ -18,6 +18,7 @@ var validLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numberCorrect = 0
 var gameOver:bool = false
 
+signal wordSubmitted(grid, line)
 
 var words:Dictionary = {
 	
@@ -179,6 +180,7 @@ func submitWord():
 				return
 		
 		checkWord(word.to_lower(), grid.currentLine, int(board.name))
+		emit_signal("wordSubmitted", grid, grid.currentLine)
 		grid.enter()
 		
 		pass
@@ -191,12 +193,12 @@ func addLetter(letter:String):
 		return
 	grid.addLetter(letter)
 	
-func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1)):
+func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1), state:int=NORM):
 	var board = $"3DGrid".selectedBoard
 	var grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
-	grid.setLetter(line, c, l, color)
+	grid.setLetter(line, c, l, color, state)
 	
 	
 func removeLetter():
@@ -207,14 +209,14 @@ func removeLetter():
 	grid.removeLetter()
 	
 	
+enum {NORM, INCORRECT, MISPLACED, CORRECT}
+	
 func checkWord(word:String, x:int, y:int):
 	
 	var board = $"3DGrid".selectedBoard
 	var grid:Grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
-	
-		
 	
 	var answerX = words.x[x]
 	var answerY = words.y[y]
@@ -223,7 +225,7 @@ func checkWord(word:String, x:int, y:int):
 		
 		for letter in range(word.length()):
 	
-			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
+			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct, CORRECT)
 			
 		if word == answerY:
 			
@@ -241,7 +243,7 @@ func checkWord(word:String, x:int, y:int):
 			for letter in range(word.length()):
 				
 				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
-				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
+				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct, CORRECT)
 			
 		updateRevealButton(y,x)
 			
@@ -289,11 +291,11 @@ func checkWord(word:String, x:int, y:int):
 		match tWord[letter]:
 			
 			"/":
-				setLetter(grid.currentLine, letter, word[letter].to_upper(), misplaced)
+				setLetter(grid.currentLine, letter, word[letter].to_upper(), misplaced, MISPLACED)
 			"@":
-				setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
+				setLetter(grid.currentLine, letter, word[letter].to_upper(), correct, CORRECT)
 			_:
-				setLetter(grid.currentLine, letter, word[letter].to_upper(), incorrect)
+				setLetter(grid.currentLine, letter, word[letter].to_upper(), incorrect, INCORRECT)
 		
 	#print("t: "+tWord+", x: "+answerX+", y: "+answerY)
 	
