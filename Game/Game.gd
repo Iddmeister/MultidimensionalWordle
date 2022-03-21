@@ -1,6 +1,5 @@
 extends Node
 
-export var completelyCorrect:Color
 export var correct:Color
 export var misplaced:Color
 export var incorrect:Color
@@ -226,7 +225,7 @@ func checkWord(word:String, x:int, y:int):
 		
 		for letter in range(word.length()):
 	
-			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)#completelyCorrect)
+			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
 			
 		if word == answerY:
 			
