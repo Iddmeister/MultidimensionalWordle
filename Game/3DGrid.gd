@@ -1,8 +1,8 @@
 extends Spatial
 
 export var speed:float = 0.2
-export var zspacing:float = 4
-export var xspacing:float = 0
+export var zspacing:float = 0
+export var xspacing:float = 6
 
 onready var move:Tween = get_parent().get_node("Move")
 
@@ -23,8 +23,8 @@ func _ready():
 		
 	selectedBoard.get_node("Viewport/Grid").selectLine(0)
 	
-	moveCam(selectedBoard, true)
-	selectedBoard.get_node("Back").get_active_material(0).albedo_color = selectedBoard.get_node("Viewport/Grid").selectedColor
+	moveCam(get_node("2"), true)
+	selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor
 	
 func moveCam(board, rotate:bool=false):
 	var p = get_parent().get_node("Pivot")
@@ -45,9 +45,9 @@ func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 		selectedBoard = board
 		
 		for b in get_children():
-			b.get_node("Back").get_active_material(0).albedo_color = Color(0.058824, 0.058824, 0.058824)
+			b.get_node("Back").modulate = Color(0.058824, 0.058824, 0.058824)
 		
-		selectedBoard.get_node("Back").get_active_material(0).albedo_color = selectedBoard.get_node("Viewport/Grid").selectedColor
+		selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor
 		
 		var offset = min(int(((selectedBoard.get_node("Area").transform.origin-pos).y)+3), 5)
 		

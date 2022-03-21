@@ -1,21 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Board/AnswerGridFlat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Misc/Square.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2.5, 3, 0.05 )
 
-[sub_resource type="SpatialMaterial" id=2]
-resource_local_to_scene = true
-flags_unshaded = true
-albedo_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
-
-[sub_resource type="CubeMesh" id=3]
-resource_local_to_scene = true
-material = SubResource( 2 )
-size = Vector3( 5.3, 6.3, 0.2 )
-
-[node name="BoardSprite" type="Sprite3D" groups=["Board"]]
+[node name="BoardSprite" type="Sprite3D" groups=[
+"Board",
+]]
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 500, 600 )
@@ -31,7 +24,8 @@ render_target_v_flip = true
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 1 )
 
-[node name="Back" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.21 )
-mesh = SubResource( 3 )
-material/0 = null
+[node name="Back" type="Sprite3D" parent="."]
+transform = Transform( 16.563, 0, 0, 0, 19.688, 0, 0, 0, 1, 0, 0, -0.01 )
+modulate = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+alpha_cut = 1
+texture = ExtResource( 2 )

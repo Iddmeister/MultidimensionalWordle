@@ -134,26 +134,24 @@ func _unhandled_key_input(event):
 		
 		var letter = OS.get_scancode_string(event.scancode)
 		
-		if letter == "Enter":
-			
-			submitWord()
-			
-		elif letter == "BackSpace":
-			
-			removeLetter()
-			
-		elif letter in validLetters:
-			
-			addLetter(letter)
-			
-		if event.is_action("center"):
-			$"3DGrid".moveCam($"3DGrid".selectedBoard)
-		elif event.is_action("rotCam"):
-			$"3DGrid".moveCam($"3DGrid".selectedBoard)
-			yield(get_tree().create_timer(0), "timeout")
-			$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
+		pressedKey(letter)
+		
+
 			
 			
+func pressedKey(letter:String):
+	if letter == "Enter":
+		
+		submitWord()
+		
+	elif letter == "BackSpace":
+		
+		removeLetter()
+		
+	elif letter in validLetters:
+		
+		addLetter(letter)
+
 
 func submitWord():
 	if gameOver == true:
