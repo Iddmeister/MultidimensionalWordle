@@ -1,5 +1,6 @@
 extends Node
 
+export var completelyCorrect:Color
 export var correct:Color
 export var misplaced:Color
 export var incorrect:Color
@@ -8,6 +9,8 @@ export var resigned:Color
 export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
 export var gameSeed:String = ""
+export var wordsToReveal = ""
+
 
 var allowedWordsPath:String = "res://words/wordle-allowed-guesses.txt"
 var validSolutionWordsPath:String = "res://words/wordle-answers-alphabetical.txt"
@@ -34,6 +37,10 @@ var wordsCorrect:Dictionary = {
 }
 
 var wordsEntered:Array = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
+var xUnrevealed = 6
+var yUnrevealed = 6
+var unrevealedArray:Array = [[0,1,2,3,4,5],[0,1,2,3,4,5]] # I suck at programming so I have to bodge everything to make up for it. Don't mind all these arrays :) 
+var integerToReveal = int(0)
 
 func reset(s:String):
 	
@@ -215,6 +222,7 @@ func checkWord(word:String, x:int, y:int):
 	var grid:Grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
+				
 	
 		
 	
@@ -223,27 +231,37 @@ func checkWord(word:String, x:int, y:int):
 	
 	if word == answerX or word == answerY:
 		
-		for letter in range(word.length()):
-	
-			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
-			
-		if word == answerY:
-			
-			wordsCorrect["y"][y] = true
-			
+		if wordsCorrect["x"][x] and wordsCorrect["y"][y]:
 			for letter in range(word.length()):
-				
-				grid.get_node("a"+String(letter)).text = word[letter].to_upper()
-				grid.get_node("a"+String(letter)).setColour(correct)
-				
-		if word == answerX:
-			
-			wordsCorrect["x"][x] = true
-			
+		
+				setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)#completelyCorrect)
+		elif wordsCorrect["x"][x]:
 			for letter in range(word.length()):
+		
+				setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)#completelyCorrect)
 				
-				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
-				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
+			if word == answerY:
+				
+				wordsCorrect["y"][y] = true
+				for letter in range(word.length()):
+					
+					grid.get_node("a"+String(letter)).text = word[letter].to_upper()
+					grid.get_node("a"+String(letter)).setColour(correct)
+					
+					
+		elif wordsCorrect["y"][y]:
+			for letter in range(word.length()):
+		
+				setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)#completelyCorrect)
+
+			if word == answerX:
+				
+				wordsCorrect["x"][x] = true
+				
+				for letter in range(word.length()):
+					
+					var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+					answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
 			
 		updateRevealButton(y,x)
 			
@@ -330,6 +348,10 @@ func _on_New_pressed():
 
 
 func _on_Start_pressed():
+	wordsCorrect = {
+		"x":[false, false, false, false, false, false],
+		"y":[false, false, false, false, false, false],
+	}
 	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text == "":
 		randomize()
 		gameSeed = String(int(rand_range(0, 99999)))
@@ -337,12 +359,33 @@ func _on_Start_pressed():
 	else:
 		gameSeed = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text
 		reset(gameSeed)
-		
+	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Words.value == 0:
+		pass
+	else:
+		wordsToReveal = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Words.value
+		xUnrevealed = 6
+		yUnrevealed = 6
+		unrevealedArray = [[0,1,2,3,4,5],[0,1,2,3,4,5]] # I suck at programming so I have to bodge everything to make up for it. Don't mind all these arrays :) 
+		for numberRevealed in range(wordsToReveal):	
+			randomize()
+			integerToReveal = int(round((rand_range(.5,xUnrevealed+yUnrevealed+.5))))
+			if integerToReveal > xUnrevealed:
+				integerToReveal -= xUnrevealed
+				for letter in range(len(words["y"][integerToReveal-1])):
+					(get_node("3DGrid/"+String(unrevealedArray[0][integerToReveal-1])).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words["y"][unrevealedArray[0][integerToReveal-1]][letter].to_upper()
+					(get_node("3DGrid/"+String(unrevealedArray[0][integerToReveal-1])).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(completelyCorrect)
+				wordsCorrect["y"][unrevealedArray[0][integerToReveal-1]] = true
+				unrevealedArray[0].remove(integerToReveal-1)
+				yUnrevealed -= 1
+			else:
+				for letter in range(len(words["x"][integerToReveal-1])):
+					var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+					answerGrid.setLetter((unrevealedArray[1][integerToReveal-1]), letter, words["x"][unrevealedArray[1][integerToReveal-1]][letter].to_upper(), completelyCorrect)
+				wordsCorrect["x"][unrevealedArray[1][integerToReveal-1]] = true
+				unrevealedArray[1].remove(integerToReveal-1)
+				xUnrevealed -= 1
+				
 	gameOver = false
-	wordsCorrect = {
-		"x":[false, false, false, false, false, false],
-		"y":[false, false, false, false, false, false],
-	}
 	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
 	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Give Up"
 	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").show()
