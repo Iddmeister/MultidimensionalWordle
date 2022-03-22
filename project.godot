@@ -43,6 +43,10 @@ gdscript/warnings/function_may_yield=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
+[display]
+
+window/handheld/orientation="portrait"
+
 [input]
 
 pan={

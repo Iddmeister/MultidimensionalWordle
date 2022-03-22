@@ -1,31 +1,23 @@
 extends Spatial
 
 export var speed:float = 0.2
-export var zspacing:float = 0
+export var zspacing:float = 4
 export var xspacing:float = 5.7
+
+export var singleView:bool = true
 
 onready var move:Tween = get_parent().get_node("Move")
 
-onready var selectedBoard:Spatial = get_child(6)
+onready var selectedBoard:Spatial = get_child(3)
 
 signal selectedLine(grid, line)
 
 func _ready():
 	
-	for b in range(get_child_count()):
-		
-		var board:Spatial = get_child(b)
-		
-		board.transform.origin.z = (b-2)*zspacing
-		board.transform.origin.x = (b-2)*-xspacing
-		board.texture = board.get_node("Viewport").get_texture()
-		var area:Area = board.get_node("Area")
-		area.connect("input_event", self, "boardEvent", [board])
+	setView(true, true)
 		
 		
 	selectedBoard.get_node("Viewport/Grid").selectLine(0)
-	
-	moveCam(get_node("2"), true)
 	selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor
 	
 func moveCam(board, rotate:bool=false):
@@ -42,13 +34,15 @@ func moveCam(board, rotate:bool=false):
 var panning:bool = false
 	
 func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
-	if event is InputEventMouseButton and event.is_action("click") and not panning and not event.pressed:
+	if event is InputEventScreenTouch or (event is InputEventMouseButton and event.is_action("click") and not panning) and not event.pressed:
 		
 		
-		if board.name == "Answer":
+		if board.name == "Answer" and not singleView:
 			return
 		
 		selectedBoard = board
+		
+		cycleBoards()
 		
 		for b in get_children():
 			b.get_node("Back").modulate = Color(0.058824, 0.058824, 0.058824)
@@ -64,7 +58,6 @@ func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 			get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
 		
 	pass
-	
 	
 func changeLayout(x:float, z:float):
 	
@@ -90,3 +83,46 @@ func _on_zspacing_value_changed(value):
 	zspacing = value
 	changeLayout(xspacing, zspacing)
 
+export var cycleSpeed:float = 0.2
+
+func cycleBoards():
+	
+	var tween:Tween = get_parent().get_node("Move")
+	
+	var selected:int = selectedBoard.get_index()
+	
+	for b in range(get_child_count()):
+		
+		var board:Spatial = get_child(b)
+		
+		tween.interpolate_property(board, "transform:origin:z", null, abs(b-selected)*-zspacing, cycleSpeed, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0)
+		tween.interpolate_property(board, "transform:origin:x", null, (b-selected)*-xspacing, cycleSpeed, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0)
+		tween.start()
+	
+	pass
+
+func setView(single:bool=false, first:bool=false):
+	
+	var selected:int = selectedBoard.get_index()
+	
+	for b in range(get_child_count()):
+		
+		var board:Spatial = get_child(b)
+		
+		if single:
+			
+			board.transform.origin.z = abs(b-selected)*-zspacing
+			board.transform.origin.x = (b-selected)*-xspacing
+			
+		else:
+			board.transform.origin.z = 0
+			board.transform.origin.x = (b-2)*-xspacing
+		
+		if first:
+			
+			board.texture = board.get_node("Viewport").get_texture()
+			var area:Area = board.get_node("Area")
+			area.connect("input_event", self, "boardEvent", [board])
+	
+	
+	pass

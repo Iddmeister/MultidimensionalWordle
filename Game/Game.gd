@@ -9,6 +9,7 @@ export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
 export var gameSeed:String = ""
 
+
 var allowedWordsPath:String = "res://words/wordle-allowed-guesses.txt"
 var validSolutionWordsPath:String = "res://words/wordle-answers-alphabetical.txt"
 var allowedWords:Array = []
