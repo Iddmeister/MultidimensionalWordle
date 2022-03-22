@@ -2,7 +2,7 @@ extends Spatial
 
 export var speed:float = 0.2
 export var zspacing:float = 0
-export var xspacing:float = 6
+export var xspacing:float = 5.7
 
 onready var move:Tween = get_parent().get_node("Move")
 

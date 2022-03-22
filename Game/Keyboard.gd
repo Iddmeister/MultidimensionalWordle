@@ -83,7 +83,7 @@ func updateKeyboard(grid, line):
 	
 	var allLetters = grid.getLetters()
 	
-	for x in range(5):
+	for x in range(6):
 		var board = get_parent().get_parent().get_node("3DGrid")
 		allLetters += board.get_node(String(x)).get_node("Viewport/Grid").getLineLetters(line)
 		

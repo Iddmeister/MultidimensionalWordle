@@ -31,14 +31,13 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0.572549 )
 
-[sub_resource type="Theme" id=8]
+[sub_resource type="Theme" id=6]
 default_font = SubResource( 1 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "Hide"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
@@ -76,8 +75,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Show"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
@@ -143,10 +141,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788, 0 )
 [node name="5" parent="3DGrid" instance=ExtResource( 1 )]
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 
 [node name="Camera" type="Camera" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17 )
 script = ExtResource( 3 )
 
 [node name="Zoom" type="Tween" parent="Pivot/Camera"]
@@ -589,7 +587,19 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 45.0
+focus_mode = 0
+theme = SubResource( 6 )
+text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -598,7 +608,7 @@ __meta__ = {
 anchor_bottom = 1.0
 margin_right = 248.0
 rect_scale = Vector2( 1e-05, 1 )
-theme = SubResource( 8 )
+theme = SubResource( 6 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -613,41 +623,13 @@ margin_bottom = 593.0
 [node name="Back" type="Button" parent="UI/Menu/VBoxContainer"]
 margin_right = 234.0
 margin_bottom = 25.0
+focus_mode = 0
 text = "Back"
-
-[node name="Button2" type="Button" parent="UI/Menu/VBoxContainer"]
-margin_top = 29.0
-margin_right = 234.0
-margin_bottom = 54.0
-text = "Text"
-
-[node name="Button3" type="Button" parent="UI/Menu/VBoxContainer"]
-margin_top = 58.0
-margin_right = 234.0
-margin_bottom = 83.0
-text = "Text"
-
-[node name="Button4" type="Button" parent="UI/Menu/VBoxContainer"]
-margin_top = 87.0
-margin_right = 234.0
-margin_bottom = 112.0
-text = "Text"
 
 [node name="Animation" type="AnimationPlayer" parent="UI/Menu"]
 playback_speed = 5.0
-anims/Hide = SubResource( 6 )
-anims/Show = SubResource( 5 )
-
-[node name="MenuButton" type="Button" parent="UI"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 12.0
-margin_bottom = 20.0
-theme = SubResource( 8 )
-text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anims/Hide = SubResource( 7 )
+anims/Show = SubResource( 8 )
 
 [connection signal="wordSubmitted" from="." to="UI/Keyboard" method="updateKeyboard"]
 [connection signal="selectedLine" from="3DGrid" to="UI/Keyboard" method="updateKeyboard"]
@@ -658,5 +640,5 @@ __meta__ = {
 [connection signal="pressed" from="UI/PanelContainer/MarginContainer/VBoxContainer/Reveal" to="." method="_on_Resign_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="UI/Menu/VBoxContainer/Back" to="UI/Menu" method="_on_Back_pressed"]
 [connection signal="pressed" from="UI/MenuButton" to="UI/Menu" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="UI/Menu/VBoxContainer/Back" to="UI/Menu" method="_on_Back_pressed"]

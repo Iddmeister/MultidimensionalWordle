@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_MenuButton_pressed():
-	get_parent().get_node("MenuButton").hide()
+	#get_parent().get_node("MenuButton").hide()
 	$Animation.play("Show")
 
 
