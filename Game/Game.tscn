@@ -39,6 +39,7 @@ resigned = Color( 1, 0.0509804, 0.0509804, 1 )
 [node name="Move" type="Tween" parent="."]
 
 [node name="3DGrid" type="Spatial" parent="."]
+visible = false
 script = ExtResource( 2 )
 
 [node name="Answer" parent="3DGrid" instance=ExtResource( 6 )]
@@ -77,7 +78,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
 margin_right = 150.0
-margin_bottom = 209.0
+margin_bottom = 179.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -87,7 +88,7 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 145.0
-margin_bottom = 204.0
+margin_bottom = 174.0
 custom_constants/separation = 5
 alignment = 1
 
@@ -142,6 +143,7 @@ text = "Seed"
 align = 1
 
 [node name="Reveal" type="Button" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 margin_top = 174.0
 margin_right = 140.0
 margin_bottom = 199.0
@@ -149,7 +151,6 @@ focus_mode = 0
 text = "Give Up"
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.707092

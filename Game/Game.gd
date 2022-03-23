@@ -60,6 +60,8 @@ func reset(s:String):
 
 func _ready():
 	
+	$UI/CenterContainer/NewGamePopup.popup()
+	
 	if gameSeed == "":
 		randomize()
 		gameSeed = String(int(rand_range(0, 99999)))
@@ -223,7 +225,7 @@ func checkWord(word:String, x:int, y:int):
 	if grid.complete or board.name == "Answer":
 		return
 				
-	
+	print("bozo")
 		
 	
 	var answerX = words.x[x]
@@ -262,10 +264,27 @@ func checkWord(word:String, x:int, y:int):
 					
 					var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
 					answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
+		else:
+			if word == answerY:
+				
+				wordsCorrect["y"][y] = true
+				for letter in range(word.length()):
+					
+					grid.get_node("a"+String(letter)).text = word[letter].to_upper()
+					grid.get_node("a"+String(letter)).setColour(correct)
+					
+			if word == answerX:
+				
+				wordsCorrect["x"][x] = true
+				
+				for letter in range(word.length()):
+					
+					var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+					answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct)
 			
 		updateRevealButton(y,x)
 			
-		return
+		
 	
 	var tWord:String = word
 	
@@ -348,6 +367,7 @@ func _on_New_pressed():
 
 
 func _on_Start_pressed():
+	$"3DGrid".show()
 	wordsCorrect = {
 		"x":[false, false, false, false, false, false],
 		"y":[false, false, false, false, false, false],

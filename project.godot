@@ -30,7 +30,8 @@ config/name="Multidimensional Wordle"
 run/main_scene="res://Game/Game.tscn"
 boot_splash/image="res://3D Wordle Splash.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
-config/icon="res://icon.png"
+config/icon="res://pngicon.png"
+config/windows_native_icon="res://icon.ico"
 
 [debug]
 
@@ -42,6 +43,10 @@ gdscript/warnings/void_assignment=false
 gdscript/warnings/function_may_yield=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
+
+[global]
+
+icon=false
 
 [input]
 
