@@ -43,10 +43,6 @@ gdscript/warnings/function_may_yield=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
-[display]
-
-window/handheld/orientation="portrait"
-
 [input]
 
 pan={
@@ -78,4 +74,5 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
 environment/default_environment="res://default_env.tres"
