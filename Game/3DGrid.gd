@@ -8,7 +8,7 @@ export var singleView:bool = true
 
 onready var move:Tween = get_parent().get_node("Move")
 
-onready var selectedBoard:Spatial = get_child(3)
+onready var selectedBoard:Spatial = get_child(3) if singleView else get_child(6)
 
 signal selectedLine(grid, line)
 
@@ -33,22 +33,25 @@ func moveCam(board, rotate:bool=false):
 var panning:bool = false
 	
 func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
-	if event is InputEventScreenTouch or (event is InputEventMouseButton and event.is_action("click") and not panning) and not event.pressed:
+	if (event is InputEventScreenTouch or (event is InputEventMouseButton)) and event.pressed:
 		
 		
 		if board.name == "Answer" and not singleView:
 			return
 		
-		selectedBoard = board
-		
-		cycleBoards()
+		if not board == selectedBoard:
+			
+			selectedBoard = board
+			
+			if singleView:
+				cycleBoards()
 		
 		for b in get_children():
 			b.get_node("Back").modulate = Color(0.058824, 0.058824, 0.058824)
 		
 		selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor
 		
-		var offset = min(int(((selectedBoard.get_node("Area").transform.origin-pos).y)+3), 5)
+		var offset = max(min(int(((selectedBoard.get_node("Area").transform.origin-pos).y)+3), 5), 0)
 		
 		if not selectedBoard.get_node("Viewport/Grid").complete and not selectedBoard.name == "Answer":
 			selectedBoard.get_node("Viewport/Grid").selectLine(offset)
@@ -115,7 +118,7 @@ func setView(single:bool=false, first:bool=false):
 			
 		else:
 			board.transform.origin.z = 0
-			board.transform.origin.x = (b-2)*-xspacing
+			board.transform.origin.x = (b-3)*-xspacing
 		
 		if first:
 			

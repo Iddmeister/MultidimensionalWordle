@@ -36,11 +36,11 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 1 )
-
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 0.572549 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 1 )
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -597,52 +597,28 @@ focus_mode = 0
 size_flags_horizontal = 3
 text = "I'm Sure"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -249.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 70.0
-grow_horizontal = 0
-rect_min_size = Vector2( 0, 40 )
-custom_constants/separation = 10
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="3D" type="Button" parent="UI/HBoxContainer"]
-margin_right = 109.0
-margin_bottom = 50.0
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource( 6 )
-text = "3D View"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GiveUp" type="Button" parent="UI/HBoxContainer"]
-margin_left = 119.0
-margin_right = 229.0
-margin_bottom = 50.0
-focus_mode = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource( 6 )
-text = "Give Up"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Cover" type="Panel" parent="UI"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GiveUp" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -149.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+focus_mode = 0
+size_flags_horizontal = 5
+theme = SubResource( 6 )
+text = "Give Up"
 __meta__ = {
 "_edit_use_anchors_": false
 }
