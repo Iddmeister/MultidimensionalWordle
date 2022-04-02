@@ -57,6 +57,8 @@ func reset(s:String):
 
 func _ready():
 	
+	
+	
 	if gameSeed == "":
 		randomize()
 		gameSeed = String(int(rand_range(0, 99999)))
