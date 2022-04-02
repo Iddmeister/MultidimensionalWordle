@@ -21,6 +21,8 @@ var gameOver:bool = false
 
 signal wordSubmitted(grid, line)
 
+onready var grid3D = $"3DGrid"
+
 var words:Dictionary = {
 	
 	"x":["HELLO", "SOLVE", "GLAZE", "FLUFF", "SCRUB", "ROUGH"],
@@ -43,13 +45,13 @@ func reset(s:String):
 	
 	get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
 	
-	for board in $"3DGrid".get_children():
+	for board in grid3D.get_children():
 		board.get_node("Viewport/Grid").clear()
 		board.get_node("Back").get_active_material(0).albedo_color = Color(0.058824, 0.058824, 0.058824)
 		
-	$"3DGrid".selectedBoard = $"3DGrid".get_child(6)
-	$"3DGrid".selectedBoard.get_node("Viewport/Grid").selectLine(0)
-	$"3DGrid".selectedBoard.get_node("Back").get_active_material(0).albedo_color = $"3DGrid".selectedBoard.get_node("Viewport/Grid").selectedColor
+	grid3D.selectedBoard = grid3D.get_child(6)
+	grid3D.selectedBoard.get_node("Viewport/Grid").selectLine(0)
+	grid3D.selectedBoard.get_node("Back").get_active_material(0).albedo_color = grid3D.selectedBoard.get_node("Viewport/Grid").selectedColor
 	
 	pass
 
@@ -159,7 +161,7 @@ func submitWord():
 	if gameOver == true:
 		pass
 	else:
-		var board = $"3DGrid".selectedBoard
+		var board = grid3D.selectedBoard
 		var grid:Grid = board.get_node("Viewport/Grid")
 		
 		if grid.complete or board.name == "Answer":
@@ -188,14 +190,14 @@ func submitWord():
 		
 func addLetter(letter:String):
 	
-	var board = $"3DGrid".selectedBoard
+	var board = grid3D.selectedBoard
 	var grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
 	grid.addLetter(letter)
 	
 func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1), state:int=NORM):
-	var board = $"3DGrid".selectedBoard
+	var board = grid3D.selectedBoard
 	var grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
@@ -203,7 +205,7 @@ func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1), state:i
 	
 	
 func removeLetter():
-	var board = $"3DGrid".selectedBoard
+	var board = grid3D.selectedBoard
 	var grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
@@ -214,7 +216,7 @@ enum {NORM, INCORRECT, MISPLACED, CORRECT}
 	
 func checkWord(word:String, x:int, y:int):
 	
-	var board = $"3DGrid".selectedBoard
+	var board = grid3D.selectedBoard
 	var grid:Grid = board.get_node("Viewport/Grid")
 	if grid.complete or board.name == "Answer":
 		return
@@ -243,7 +245,7 @@ func checkWord(word:String, x:int, y:int):
 			
 			for letter in range(word.length()):
 				
-				var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+				var answerGrid = grid3D.get_node("Answer").get_node("Viewport/Grid")
 				answerGrid.setLetter(grid.currentLine, letter, word[letter].to_upper(), correct, CORRECT)
 			
 		updateRevealButton(y,x)
@@ -321,9 +323,9 @@ func updateRevealButton(y,x):
 
 
 func _on_Center_pressed():
-	$"3DGrid".moveCam($"3DGrid".selectedBoard)
+	grid3D.moveCam(grid3D.selectedBoard)
 	yield(get_tree().create_timer(0), "timeout")
-	$"3DGrid".moveCam($"3DGrid".selectedBoard, true)
+	grid3D.moveCam(grid3D.selectedBoard, true)
 
 
 func _on_New_pressed():
@@ -373,7 +375,7 @@ func _on_Resign_pressed():
 				if dimension == "x":
 					for letter in range((words[dimension][depth]).length()):
 				
-						var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+						var answerGrid = grid3D.get_node("Answer").get_node("Viewport/Grid")
 						answerGrid.setLetter((depth), letter, words[dimension][depth][letter].to_upper(), resigned)
 				else:
 					for letter in range((words[dimension][depth]).length()):

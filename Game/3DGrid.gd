@@ -14,8 +14,7 @@ signal selectedLine(grid, line)
 
 func _ready():
 	
-	setView(true, true)
-		
+	setView(singleView, true)
 		
 	selectedBoard.get_node("Viewport/Grid").selectLine(0)
 	selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor

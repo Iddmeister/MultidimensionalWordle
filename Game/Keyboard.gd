@@ -10,6 +10,8 @@ var incorrectTheme = preload("res://Game/Keyboard/IncorrectButton.tres")
 var correctTheme = preload("res://Game/Keyboard/CorrectButton.tres")
 var misplacedTheme = preload("res://Game/Keyboard/MisplacedButton.tres")
 
+onready var game = get_parent().get_parent()
+
 func _ready():
 	
 	for button in $VBoxContainer/Row1.get_children():
@@ -43,11 +45,11 @@ func pressedKey(button):
 	match button.name:
 		
 		"Back":
-			get_parent().get_parent().pressedKey("BackSpace")
+			game.pressedKey("BackSpace")
 		"Enter":
-			get_parent().get_parent().pressedKey("Enter")
+			game.pressedKey("Enter")
 		_:
-			get_parent().get_parent().pressedKey(button.name.to_upper())
+			game.pressedKey(button.name.to_upper())
 	pass
 	
 enum {NORM, INCORRECT, MISPLACED, CORRECT}
@@ -84,7 +86,7 @@ func updateKeyboard(grid, line):
 	var allLetters = grid.getLetters()
 	
 	for x in range(6):
-		var board = get_parent().get_parent().get_node("3DGrid")
+		var board = game.grid3D
 		allLetters += board.get_node(String(x)).get_node("Viewport/Grid").getLineLetters(line)
 		
 	var letterStates:Dictionary = {}
