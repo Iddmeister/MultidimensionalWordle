@@ -8,6 +8,7 @@ export var resigned:Color
 export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
 export var gameSeed:String = ""
+export var dailyMode:bool = true
 
 
 var allowedWordsPath:String = "res://words/wordle-allowed-guesses.txt"
@@ -57,11 +58,16 @@ func reset(s:String):
 
 func _ready():
 	
-	
-	
 	if gameSeed == "":
-		randomize()
-		gameSeed = String(int(rand_range(0, 99999)))
+		
+		var date:Dictionary = OS.get_date()
+		var dateString = "%s/%s/%s" % [date["day"], date["month"], date["year"]]
+		$UI/CenterContainer2/Seed.text = dateString
+		#Hash the date to make cheating harder
+		#gameSeed = String(dateString.hash())
+		gameSeed = dateString
+		
+		pass
 		
 	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 	
@@ -98,7 +104,6 @@ func generateAnswers(s:String) -> Dictionary:
 	
 	var f  = File.new()
 	
-		
 	var validSolutions = []
 	
 	f.open(validSolutionWordsPath, File.READ)
@@ -362,9 +367,8 @@ func _on_Start_pressed():
 
 func _on_Cancel_pressed():
 	$UI/CenterContainer/NewGamePopup.hide()
-	
 
-func _on_Resign_pressed():
+func _on_GiveUp_pressed():
 	
 	gameOver = true
 	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").hide()
@@ -385,3 +389,4 @@ func _on_Resign_pressed():
 						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(resigned)
 			
 	
+
