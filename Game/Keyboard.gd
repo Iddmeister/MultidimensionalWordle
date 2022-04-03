@@ -70,7 +70,6 @@ func setKey(key:String, state:int):
 
 func updateKeys(letters:Dictionary):
 	
-	
 	for button in buttons.keys():
 		setKey(button, NORM)
 	
@@ -83,29 +82,31 @@ func updateKeys(letters:Dictionary):
 	
 func updateKeyboard(grid, line):
 	
-	var allLetters = grid.getLetters()
+	var yLetters = grid.getLetters()
+	
+	var xLetters = []
 	
 	for x in range(6):
 		var board = game.grid3D
-		allLetters += board.get_node(String(x)).get_node("Viewport/Grid").getLineLetters(line)
+		xLetters += board.get_node(String(x)).get_node("Viewport/Grid").getLineLetters(line)
 		
 	var letterStates:Dictionary = {}
 		
-	for letter in allLetters:
-		
-		if letter.state == NORM:
-			continue
-		
-		if letter.text in letterStates:
-			if letterStates[letter.text] == CORRECT:
-				continue
-			elif letter.state == CORRECT:
-				letterStates[letter.text] = CORRECT
-				continue
-			elif letter.state == MISPLACED:
-				letterStates[letter.text] = MISPLACED
-		else:
-			letterStates[letter.text] = letter.state
+#	for letter in allLetters:
+#
+#		if letter.state == NORM:
+#			continue
+#
+#		if letter.text in letterStates:
+#			if letterStates[letter.text] == CORRECT:
+#				continue
+#			elif letter.state == CORRECT:
+#				letterStates[letter.text] = CORRECT
+#				continue
+#			elif letter.state == MISPLACED:
+#				letterStates[letter.text] = MISPLACED
+#		else:
+#			letterStates[letter.text] = letter.state
 	
 	
 	updateKeys(letterStates)

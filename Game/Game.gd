@@ -48,11 +48,11 @@ func reset(s:String):
 	
 	for board in grid3D.get_children():
 		board.get_node("Viewport/Grid").clear()
-		board.get_node("Back").get_active_material(0).albedo_color = Color(0.058824, 0.058824, 0.058824)
+		board.get_node("Back").modulate = Color(0.058824, 0.058824, 0.058824)
 		
 	grid3D.selectedBoard = grid3D.get_child(6)
 	grid3D.selectedBoard.get_node("Viewport/Grid").selectLine(0)
-	grid3D.selectedBoard.get_node("Back").get_active_material(0).albedo_color = grid3D.selectedBoard.get_node("Viewport/Grid").selectedColor
+	grid3D.selectedBoard.get_node("Back").modulate = grid3D.selectedBoard.get_node("Viewport/Grid").selectedColor
 	
 	pass
 
@@ -68,8 +68,6 @@ func _ready():
 		gameSeed = dateString
 		
 		pass
-		
-	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
 	
 	if randomizeWords:
 		words = generateAnswers(gameSeed)
@@ -315,7 +313,7 @@ func checkWord(word:String, x:int, y:int):
 
 func updateRevealButton(y,x):
 	if (not false in wordsCorrect["x"]) and (not false in wordsCorrect["y"]):
-		get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").hide()
+		get_node("UI/GiveUp").hide()
 	else:
 		wordsEntered[y][x] = true
 		for gridNumber in range(6):
@@ -326,7 +324,7 @@ func updateRevealButton(y,x):
 					else:
 						return
 			if gridNumber == 5:
-					get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Reveal Words"
+					get_node("UI/GiveUp").text="Reveal Words"
 
 
 func _on_Center_pressed():
@@ -339,31 +337,26 @@ func _on_New_pressed():
 	$UI/CenterContainer/NewGamePopup.popup()
 
 
-func _on_Start_pressed():
-	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text == "":
-		randomize()
-		gameSeed = String(int(rand_range(0, 99999)))
-		reset(gameSeed)
-	else:
-		gameSeed = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text
-		reset(gameSeed)
+func newGame(s:String):
 		
+	gameSeed = s
+	reset(gameSeed)
 	gameOver = false
 	wordsCorrect = {
 		"x":[false, false, false, false, false, false],
 		"y":[false, false, false, false, false, false],
 	}
 	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
-	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Give Up"
-	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").show()
+	get_node("UI/GiveUp").text="Give Up"
+	get_node("UI/GiveUp").show()
 	
 	print(gameSeed)
-	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
-		
-	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text = ""
-		
-	$UI/CenterContainer/NewGamePopup.hide()
-		
+	$UI/CenterContainer2/Seed.text = String(gameSeed)
+
+func _on_Start_pressed():
+
+		randomize()
+		newGame(String(int(rand_range(0, 99999))))
 
 func _on_Cancel_pressed():
 	$UI/CenterContainer/NewGamePopup.hide()
@@ -371,7 +364,7 @@ func _on_Cancel_pressed():
 func _on_GiveUp_pressed():
 	
 	gameOver = true
-	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").hide()
+	get_node("UI/GiveUp").hide()
 	
 	for depth in range(6):
 		for dimension in "xy":
@@ -390,3 +383,8 @@ func _on_GiveUp_pressed():
 			
 	
 
+
+
+func _on_NewGame_pressed():
+	randomize()
+	newGame(String(int(rand_range(0, 99999))))
