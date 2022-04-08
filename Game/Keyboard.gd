@@ -1,6 +1,6 @@
 tool
 
-extends CenterContainer
+extends Control
 
 var letters = "qwertyuiopasdfghjklzxcvbnm"
 var buttons = {}
@@ -13,7 +13,6 @@ var misplacedTheme = preload("res://Game/Keyboard/MisplacedButton.tres")
 onready var game = get_parent().get_parent()
 
 func _ready():
-	
 	for button in $VBoxContainer/Row1.get_children():
 		var letter = letters[0]
 		letters.erase(0, 1)

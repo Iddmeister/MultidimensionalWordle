@@ -21,7 +21,7 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -33,14 +33,14 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=5]
 default_font = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 0.572549 )
 
 [sub_resource type="Animation" id=8]
@@ -156,12 +156,12 @@ script = ExtResource( 3 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Keyboard" type="CenterContainer" parent="UI"]
-anchor_top = 1.0
+[node name="Keyboard" type="Control" parent="UI"]
+anchor_top = 0.752
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -200.0
-rect_min_size = Vector2( 0, 200 )
+margin_top = -0.200012
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 script = ExtResource( 7 )
@@ -170,261 +170,295 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Keyboard"]
-margin_left = 21.0
-margin_top = 19.0
-margin_right = 579.0
-margin_bottom = 181.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource( 8 )
 custom_constants/separation = 6
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Row1" type="HBoxContainer" parent="UI/Keyboard/VBoxContainer"]
-margin_right = 558.0
-margin_bottom = 50.0
-size_flags_horizontal = 7
+margin_right = 560.0
+margin_bottom = 38.0
+size_flags_vertical = 3
 custom_constants/separation = 6
 alignment = 1
 
 [node name="q" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 2.0
-margin_right = 52.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 3.0
+margin_right = 53.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "Q"
 
 [node name="w" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 58.0
-margin_right = 108.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 59.0
+margin_right = 109.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "W"
 
 [node name="e" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 114.0
-margin_right = 164.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 115.0
+margin_right = 165.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "E"
 
 [node name="r" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 170.0
-margin_right = 220.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 171.0
+margin_right = 221.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "R"
 
 [node name="t" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 226.0
-margin_right = 276.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 227.0
+margin_right = 277.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "T"
 
 [node name="y" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 282.0
-margin_right = 332.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 283.0
+margin_right = 333.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "Y"
 
 [node name="u" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 338.0
-margin_right = 388.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 339.0
+margin_right = 389.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "U"
 
 [node name="i" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 394.0
-margin_right = 444.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 395.0
+margin_right = 445.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "I"
 
 [node name="o" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 450.0
-margin_right = 500.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 451.0
+margin_right = 501.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "O"
 
 [node name="p" type="Button" parent="UI/Keyboard/VBoxContainer/Row1"]
-margin_left = 506.0
-margin_right = 556.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 507.0
+margin_right = 557.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "P"
 
 [node name="Row2" type="HBoxContainer" parent="UI/Keyboard/VBoxContainer"]
-margin_left = 30.0
-margin_top = 56.0
-margin_right = 528.0
-margin_bottom = 106.0
-size_flags_horizontal = 4
+margin_top = 44.0
+margin_right = 560.0
+margin_bottom = 83.0
+size_flags_vertical = 3
 custom_constants/separation = 6
 alignment = 1
 
 [node name="a" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 31.0
+margin_right = 81.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "A"
 
 [node name="s" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 56.0
-margin_right = 106.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 87.0
+margin_right = 137.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "S"
 
 [node name="d" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 112.0
-margin_right = 162.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 143.0
+margin_right = 193.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "D"
 
 [node name="f" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 168.0
-margin_right = 218.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 199.0
+margin_right = 249.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "F"
 
 [node name="g" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 224.0
-margin_right = 274.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 255.0
+margin_right = 305.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "G"
 
 [node name="h" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 280.0
-margin_right = 330.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 311.0
+margin_right = 361.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "H"
 
 [node name="j" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 336.0
-margin_right = 386.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 367.0
+margin_right = 417.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "J"
 
 [node name="k" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 392.0
-margin_right = 442.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 423.0
+margin_right = 473.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "K"
 
 [node name="l" type="Button" parent="UI/Keyboard/VBoxContainer/Row2"]
-margin_left = 448.0
-margin_right = 498.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 479.0
+margin_right = 529.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "L"
 
 [node name="Row3" type="HBoxContainer" parent="UI/Keyboard/VBoxContainer"]
-margin_top = 112.0
-margin_right = 558.0
-margin_bottom = 162.0
-size_flags_horizontal = 4
+margin_top = 89.0
+margin_right = 560.0
+margin_bottom = 129.0
+size_flags_vertical = 3
 custom_constants/separation = 6
 alignment = 1
 
 [node name="Enter" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_right = 80.0
-margin_bottom = 50.0
+margin_left = 1.0
+margin_right = 81.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 80, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Enter"
 
 [node name="z" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 86.0
-margin_right = 136.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 87.0
+margin_right = 137.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "Z"
 
 [node name="x" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 142.0
-margin_right = 192.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 143.0
+margin_right = 193.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "X"
 
 [node name="c" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 198.0
-margin_right = 248.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 199.0
+margin_right = 249.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "C"
 
 [node name="v" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 254.0
-margin_right = 304.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 255.0
+margin_right = 305.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "V"
 
 [node name="b" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 310.0
-margin_right = 360.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 311.0
+margin_right = 361.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "B"
 
 [node name="n" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 366.0
-margin_right = 416.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 367.0
+margin_right = 417.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "N"
 
 [node name="m" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 422.0
-margin_right = 472.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_left = 423.0
+margin_right = 473.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "M"
 
 [node name="Back" type="Button" parent="UI/Keyboard/VBoxContainer/Row3"]
-margin_left = 478.0
-margin_right = 558.0
-margin_bottom = 50.0
+margin_left = 479.0
+margin_right = 559.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 80, 40 )
 focus_mode = 0
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Back"
 
@@ -447,7 +481,7 @@ margin_right = 450.0
 margin_bottom = 400.0
 rect_min_size = Vector2( 300, 200 )
 theme = SubResource( 3 )
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/NewGamePopup"]
 margin_left = 5.0
@@ -523,7 +557,7 @@ grow_horizontal = 0
 rect_min_size = Vector2( 0, 50 )
 focus_mode = 0
 size_flags_horizontal = 8
-theme = SubResource( 7 )
+theme = SubResource( 5 )
 text = "Give Up"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -536,7 +570,7 @@ margin_right = 80.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 80, 50 )
 focus_mode = 0
-theme = SubResource( 7 )
+theme = SubResource( 5 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -555,7 +589,7 @@ margin_left = 265.0
 margin_top = 33.0
 margin_right = 335.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 6 )
 text = "SEED"
 align = 1
 
@@ -564,7 +598,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -573,7 +607,7 @@ __meta__ = {
 anchor_bottom = 1.0
 margin_right = 248.0
 rect_scale = Vector2( 1e-05, 1 )
-theme = SubResource( 7 )
+theme = SubResource( 5 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false

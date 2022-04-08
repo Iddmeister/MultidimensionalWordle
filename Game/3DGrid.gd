@@ -9,14 +9,13 @@ export var automaticViewSwitch:bool = true
 
 onready var move:Tween = get_parent().get_node("Move")
 
-onready var selectedBoard:Spatial = get_child(3) if singleView else get_child(6)
+onready var selectedBoard:Spatial = get_child(6)
 
 onready var aspect:Vector2 = OS.window_size/OS.window_size.x
 
 signal selectedLine(grid, line)
 
 func _ready():
-	
 	get_tree().root.connect("size_changed", self, "resized")
 	
 	if automaticViewSwitch:
@@ -47,7 +46,7 @@ func moveCam(board, rotate:bool=false):
 	
 func resized():
 	aspect = OS.window_size/OS.window_size.x
-	if (aspect.y < 2) and OS.window_size.x >= 1000:
+	if (aspect.y < aspect.x) and OS.window_size.x >= 1000:
 		singleView = false
 	else:
 		singleView = true
