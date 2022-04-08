@@ -13,4 +13,4 @@ func _on_MenuButton_pressed():
 func _on_Back_pressed():
 	$Animation.play("Hide")
 	yield($Animation, "animation_finished")
-	get_parent().get_node("MenuButton").show()
+	get_parent().get_node("Stuff/MenuButton").show()

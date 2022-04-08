@@ -400,7 +400,7 @@ func _on_ConfirmGiveUp_pressed():
 	$UI/CenterContainer/GiveUpConfirmation.hide()
 	
 	gameOver = true
-	get_node("UI/GiveUp").hide()
+	get_node("UI/Stuff/GiveUp").hide()
 	
 	for depth in range(6):
 		for dimension in "xy":
