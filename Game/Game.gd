@@ -16,6 +16,7 @@ var validSolutionWordsPath:String = "res://words/wordle-answers-alphabetical.txt
 var allowedWords:Array = []
 
 var validLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var validCharacters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 var numberCorrect = 0
 var gameOver:bool = false
@@ -62,7 +63,7 @@ func _ready():
 		
 		var date:Dictionary = OS.get_date()
 		var dateString = "%s/%s/%s" % [date["day"], date["month"], date["year"]]
-		$UI/CenterContainer2/Seed.text = dateString
+		$UI/Stuff/CenterContainer/Seed.text = dateString
 		#Hash the date to make cheating harder
 		#gameSeed = String(dateString.hash())
 		gameSeed = dateString
@@ -159,6 +160,9 @@ func pressedKey(letter:String):
 		if letter == "BackSpace":
 			if seedEdit.text.length() > 0:
 				seedEdit.text = seedEdit.text.substr(0, seedEdit.text.length()-1)
+			return
+			
+		if not letter in validCharacters:
 			return
 		
 		if seedEdit.text.length() < seedEdit.max_length:
@@ -330,7 +334,7 @@ func checkWord(word:String, x:int, y:int):
 
 func updateRevealButton(y,x):
 	if (not false in wordsCorrect["x"]) and (not false in wordsCorrect["y"]):
-		get_node("UI/GiveUp").hide()
+		get_node("UI/Stuff/GiveUp").hide()
 	else:
 		wordsEntered[y][x] = true
 		for gridNumber in range(6):
@@ -341,7 +345,7 @@ func updateRevealButton(y,x):
 					else:
 						return
 			if gridNumber == 5:
-					get_node("UI/GiveUp").text="Reveal Words"
+					get_node("UI/Stuff/GiveUp").text="Reveal Words"
 
 
 
@@ -355,11 +359,11 @@ func newGame(s:String):
 		"y":[false, false, false, false, false, false],
 	}
 	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
-	get_node("UI/GiveUp").text="Give Up"
-	get_node("UI/GiveUp").show()
+	get_node("UI/Stuff/GiveUp").text="Give Up"
+	get_node("UI/Stuff/GiveUp").show()
 	
 	print(gameSeed)
-	$UI/CenterContainer2/Seed.text = String(gameSeed)
+	$UI/Stuff/CenterContainer/Seed.text = String(gameSeed)
 
 func _on_NewGame_pressed():
 	

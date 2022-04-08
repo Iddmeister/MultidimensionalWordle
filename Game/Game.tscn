@@ -231,28 +231,22 @@ script = ExtResource( 3 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GiveUp" type="Button" parent="UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -149.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 50.0
-grow_horizontal = 0
-rect_min_size = Vector2( 0, 50 )
-focus_mode = 0
-size_flags_horizontal = 8
-theme = SubResource( 5 )
-text = "Give Up"
+[node name="Stuff" type="Control" parent="UI"]
+anchor_right = 0.999
+anchor_bottom = 0.153
+margin_right = 0.599976
+margin_bottom = -1.80001
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="Button" parent="UI"]
+[node name="MenuButton" type="Button" parent="UI/Stuff"]
+anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 80.0
-margin_bottom = 45.0
+margin_right = 95.0
+margin_bottom = -20.0
 rect_min_size = Vector2( 80, 50 )
 focus_mode = 0
 theme = SubResource( 5 )
@@ -261,19 +255,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer2" type="CenterContainer" parent="UI"]
+[node name="GiveUp" type="Button" parent="UI/Stuff"]
+anchor_left = 1.0
 anchor_right = 1.0
-margin_bottom = 95.0
+anchor_bottom = 1.0
+margin_left = -122.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+grow_horizontal = 0
+rect_min_size = Vector2( 0, 50 )
+focus_mode = 0
+size_flags_horizontal = 9
+theme = SubResource( 5 )
+text = "Give Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Stuff"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Seed" type="Label" parent="UI/CenterContainer2"]
+[node name="Seed" type="Label" parent="UI/Stuff/CenterContainer"]
 margin_left = 265.0
-margin_top = 33.0
+margin_top = 31.0
 margin_right = 335.0
-margin_bottom = 61.0
+margin_bottom = 59.0
 custom_fonts/font = SubResource( 6 )
 text = "SEED"
 align = 1
@@ -345,7 +357,7 @@ margin_left = 218.0
 margin_right = 406.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 100, 0 )
-focus_mode = 1
+focus_mode = 0
 max_length = 5
 context_menu_enabled = false
 virtual_keyboard_enabled = false
@@ -757,28 +769,33 @@ margin_left = 14.0
 margin_top = 14.0
 margin_right = 234.0
 margin_bottom = 586.0
+custom_constants/separation = 40
+alignment = 1
 
 [node name="Back" type="Button" parent="UI/Menu/VBoxContainer"]
 margin_right = 220.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 0, 60 )
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 80 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "Back"
 
 [node name="NewGame" type="Button" parent="UI/Menu/VBoxContainer"]
-margin_top = 68.0
+margin_top = 204.0
 margin_right = 220.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 0, 60 )
+margin_bottom = 368.0
+rect_min_size = Vector2( 0, 80 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "New Game"
 
 [node name="How" type="Button" parent="UI/Menu/VBoxContainer"]
-margin_top = 136.0
+margin_top = 408.0
 margin_right = 220.0
-margin_bottom = 196.0
-rect_min_size = Vector2( 0, 60 )
+margin_bottom = 572.0
+rect_min_size = Vector2( 0, 80 )
 focus_mode = 0
+size_flags_vertical = 3
 text = "How To Play?"
 
 [node name="Animation" type="AnimationPlayer" parent="UI/Menu"]
@@ -789,8 +806,8 @@ anims/Show = SubResource( 9 )
 
 [connection signal="wordSubmitted" from="." to="UI/Keyboard" method="updateKeyboard"]
 [connection signal="selectedLine" from="3DGrid" to="UI/Keyboard" method="updateKeyboard"]
-[connection signal="pressed" from="UI/GiveUp" to="." method="_on_GiveUp_pressed"]
-[connection signal="pressed" from="UI/MenuButton" to="UI/Menu" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="UI/Stuff/MenuButton" to="UI/Menu" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="UI/Stuff/GiveUp" to="." method="_on_GiveUp_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/GiveUpConfirmation/VBoxContainer/HBoxContainer2/CancelGiveUp" to="." method="_on_CancelGiveUp_pressed"]
