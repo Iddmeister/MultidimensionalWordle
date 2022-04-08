@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Board/BoardSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game/3DGrid.gd" type="Script" id=2]
@@ -10,13 +10,19 @@
 [ext_resource path="res://Game/Keyboard/NormButton.tres" type="Theme" id=8]
 [ext_resource path="res://Game/Menu.gd" type="Script" id=9]
 
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.572549 )
 
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 2 )
@@ -33,15 +39,9 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="Theme" id=5]
-default_font = SubResource( 2 )
-
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 4 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0, 0, 0, 0.572549 )
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -81,6 +81,69 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "NewGame"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Cover:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Cover:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Cover2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Cover2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
@@ -117,6 +180,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Cover2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Game" type="Node"]
@@ -155,6 +230,201 @@ script = ExtResource( 3 )
 [node name="Zoom" type="Tween" parent="Pivot/Camera"]
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GiveUp" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -149.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 50.0
+grow_horizontal = 0
+rect_min_size = Vector2( 0, 50 )
+focus_mode = 0
+size_flags_horizontal = 8
+theme = SubResource( 5 )
+text = "Give Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 80, 50 )
+focus_mode = 0
+theme = SubResource( 5 )
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer2" type="CenterContainer" parent="UI"]
+anchor_right = 1.0
+margin_bottom = 95.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Seed" type="Label" parent="UI/CenterContainer2"]
+margin_left = 265.0
+margin_top = 33.0
+margin_right = 335.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 6 )
+text = "SEED"
+align = 1
+
+[node name="Cover2" type="Panel" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.707092
+margin_right = -0.707092
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NewGamePopup" type="PanelContainer" parent="UI/CenterContainer"]
+visible = false
+margin_left = 150.0
+margin_top = 200.0
+margin_right = 450.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 300, 200 )
+theme = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/NewGamePopup"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 411.0
+margin_bottom = 195.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
+margin_right = 406.0
+margin_bottom = 62.0
+text = "Are you sure you want to start a new game?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
+margin_top = 82.0
+margin_right = 406.0
+margin_bottom = 130.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer"]
+margin_top = 10.0
+margin_right = 208.0
+margin_bottom = 38.0
+text = "New Game Seed:"
+
+[node name="Seed" type="LineEdit" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer"]
+margin_left = 218.0
+margin_right = 406.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 1
+max_length = 5
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+placeholder_text = "Random"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
+margin_top = 150.0
+margin_right = 406.0
+margin_bottom = 190.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Cancel" type="Button" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2"]
+margin_right = 193.0
+margin_bottom = 40.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="Start" type="Button" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2"]
+margin_left = 213.0
+margin_right = 406.0
+margin_bottom = 40.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "I'm Sure"
+
+[node name="GiveUpConfirmation" type="PanelContainer" parent="UI/CenterContainer"]
+visible = false
+margin_left = 150.0
+margin_top = 200.0
+margin_right = 450.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 300, 200 )
+theme = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/GiveUpConfirmation"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 295.0
+margin_bottom = 195.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/CenterContainer/GiveUpConfirmation/VBoxContainer"]
+margin_top = 17.0
+margin_right = 290.0
+margin_bottom = 113.0
+text = "Are you sure you
+want to reveal the solutions?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/CenterContainer/GiveUpConfirmation/VBoxContainer"]
+margin_top = 133.0
+margin_right = 290.0
+margin_bottom = 173.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="CancelGiveUp" type="Button" parent="UI/CenterContainer/GiveUpConfirmation/VBoxContainer/HBoxContainer2"]
+margin_right = 135.0
+margin_bottom = 40.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="ConfirmGiveUp" type="Button" parent="UI/CenterContainer/GiveUpConfirmation/VBoxContainer/HBoxContainer2"]
+margin_left = 155.0
+margin_right = 290.0
+margin_bottom = 40.0
+focus_mode = 0
+size_flags_horizontal = 3
+text = "I'm Sure"
 
 [node name="Keyboard" type="Control" parent="UI"]
 anchor_top = 0.752
@@ -462,137 +732,6 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Back"
 
-[node name="CenterContainer" type="CenterContainer" parent="UI"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -0.707092
-margin_right = -0.707092
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NewGamePopup" type="PanelContainer" parent="UI/CenterContainer"]
-visible = false
-margin_left = 150.0
-margin_top = 200.0
-margin_right = 450.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 300, 200 )
-theme = SubResource( 3 )
-custom_styles/panel = SubResource( 4 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer/NewGamePopup"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 411.0
-margin_bottom = 195.0
-custom_constants/separation = 20
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
-margin_right = 406.0
-margin_bottom = 62.0
-text = "Are you sure you want to start a new game?"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
-margin_top = 82.0
-margin_right = 406.0
-margin_bottom = 130.0
-custom_constants/separation = 10
-alignment = 1
-
-[node name="Label" type="Label" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer"]
-margin_top = 10.0
-margin_right = 208.0
-margin_bottom = 38.0
-text = "New Game Seed:"
-
-[node name="Seed" type="LineEdit" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer"]
-margin_left = 218.0
-margin_right = 406.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 100, 0 )
-focus_mode = 1
-max_length = 5
-placeholder_text = "Random"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UI/CenterContainer/NewGamePopup/VBoxContainer"]
-margin_top = 150.0
-margin_right = 406.0
-margin_bottom = 190.0
-custom_constants/separation = 20
-alignment = 1
-
-[node name="Cancel" type="Button" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2"]
-margin_right = 193.0
-margin_bottom = 40.0
-focus_mode = 0
-size_flags_horizontal = 3
-text = "Cancel"
-
-[node name="Start" type="Button" parent="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2"]
-margin_left = 213.0
-margin_right = 406.0
-margin_bottom = 40.0
-focus_mode = 0
-size_flags_horizontal = 3
-text = "I'm Sure"
-
-[node name="GiveUp" type="Button" parent="UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -149.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 50.0
-grow_horizontal = 0
-rect_min_size = Vector2( 0, 50 )
-focus_mode = 0
-size_flags_horizontal = 8
-theme = SubResource( 5 )
-text = "Give Up"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MenuButton" type="Button" parent="UI"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 80.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 80, 50 )
-focus_mode = 0
-theme = SubResource( 5 )
-text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer2" type="CenterContainer" parent="UI"]
-anchor_right = 1.0
-margin_bottom = 95.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Seed" type="Label" parent="UI/CenterContainer2"]
-margin_left = 265.0
-margin_top = 33.0
-margin_right = 335.0
-margin_bottom = 61.0
-custom_fonts/font = SubResource( 6 )
-text = "SEED"
-align = 1
-
 [node name="Cover" type="Panel" parent="UI"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -645,13 +784,16 @@ text = "How To Play?"
 [node name="Animation" type="AnimationPlayer" parent="UI/Menu"]
 playback_speed = 5.0
 anims/Hide = SubResource( 8 )
+anims/NewGame = SubResource( 10 )
 anims/Show = SubResource( 9 )
 
 [connection signal="wordSubmitted" from="." to="UI/Keyboard" method="updateKeyboard"]
 [connection signal="selectedLine" from="3DGrid" to="UI/Keyboard" method="updateKeyboard"]
-[connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Cancel" to="." method="_on_Cancel_pressed"]
-[connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="UI/GiveUp" to="." method="_on_GiveUp_pressed"]
 [connection signal="pressed" from="UI/MenuButton" to="UI/Menu" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer2/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/GiveUpConfirmation/VBoxContainer/HBoxContainer2/CancelGiveUp" to="." method="_on_CancelGiveUp_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/GiveUpConfirmation/VBoxContainer/HBoxContainer2/ConfirmGiveUp" to="." method="_on_ConfirmGiveUp_pressed"]
 [connection signal="pressed" from="UI/Menu/VBoxContainer/Back" to="UI/Menu" method="_on_Back_pressed"]
 [connection signal="pressed" from="UI/Menu/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]

@@ -12,6 +12,7 @@ var misplacedTheme = preload("res://Game/Keyboard/MisplacedButton.tres")
 
 onready var game = get_parent().get_parent()
 
+
 func _ready():
 	for button in $VBoxContainer/Row1.get_children():
 		var letter = letters[0]
@@ -41,6 +42,7 @@ func _ready():
 		buttons[button.name] = button
 	
 func pressedKey(button):
+	
 	match button.name:
 		
 		"Back":
@@ -67,13 +69,13 @@ func setKey(key:String, state:int):
 			buttons[key].theme = correctTheme
 
 
-func updateKeys(letters:Dictionary):
+func updateKeys(_letters:Dictionary):
 	
 	for button in buttons.keys():
 		setKey(button, NORM)
 	
-	for letter in letters.keys():
-		setKey(letter.to_lower(), letters[letter])
+	for letter in _letters.keys():
+		setKey(letter.to_lower(), _letters[letter])
 	
 	pass
 

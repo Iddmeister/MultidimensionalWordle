@@ -146,9 +146,26 @@ func _unhandled_key_input(event):
 		pressedKey(letter)
 		
 
-			
-			
+var typingOnBoard:bool = true
+
+onready var seedEdit = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed
+
 func pressedKey(letter:String):
+	
+	if not typingOnBoard:
+		
+		if letter == "Enter":
+			return
+		if letter == "BackSpace":
+			if seedEdit.text.length() > 0:
+				seedEdit.text = seedEdit.text.substr(0, seedEdit.text.length()-1)
+			return
+		
+		if seedEdit.text.length() < seedEdit.max_length:
+			seedEdit.text += letter
+		
+		return
+	
 	if letter == "Enter":
 		
 		submitWord()
@@ -327,15 +344,6 @@ func updateRevealButton(y,x):
 					get_node("UI/GiveUp").text="Reveal Words"
 
 
-func _on_Center_pressed():
-	grid3D.moveCam(grid3D.selectedBoard)
-	yield(get_tree().create_timer(0), "timeout")
-	grid3D.moveCam(grid3D.selectedBoard, true)
-
-
-func _on_New_pressed():
-	$UI/CenterContainer/NewGamePopup.popup()
-
 
 func newGame(s:String):
 		
@@ -353,15 +361,39 @@ func newGame(s:String):
 	print(gameSeed)
 	$UI/CenterContainer2/Seed.text = String(gameSeed)
 
+func _on_NewGame_pressed():
+	
+	$UI/Menu/Animation.play("NewGame")
+	$UI/CenterContainer/NewGamePopup.show()
+	typingOnBoard = false
+
 func _on_Start_pressed():
 
+	$UI/Cover2.hide()
+	$UI/CenterContainer/NewGamePopup.hide()
+	if seedEdit.text == "":
 		randomize()
 		newGame(String(int(rand_range(0, 99999))))
+	else:
+		newGame(String(seedEdit.text))
+	seedEdit.text = ""
+	typingOnBoard = true
 
 func _on_Cancel_pressed():
 	$UI/CenterContainer/NewGamePopup.hide()
+	$UI/Cover2.hide()
+	seedEdit.text = ""
+	typingOnBoard = true
+
 
 func _on_GiveUp_pressed():
+	$UI/CenterContainer/GiveUpConfirmation.show()
+
+
+
+func _on_ConfirmGiveUp_pressed():
+	
+	$UI/CenterContainer/GiveUpConfirmation.hide()
 	
 	gameOver = true
 	get_node("UI/GiveUp").hide()
@@ -383,8 +415,5 @@ func _on_GiveUp_pressed():
 			
 	
 
-
-
-func _on_NewGame_pressed():
-	randomize()
-	newGame(String(int(rand_range(0, 99999))))
+func _on_CancelGiveUp_pressed():
+	$UI/CenterContainer/GiveUpConfirmation.hide()
