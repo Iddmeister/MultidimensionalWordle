@@ -367,6 +367,8 @@ func newGame(s:String):
 
 func _on_NewGame_pressed():
 	
+	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value = 0
+	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Label.text = "Reveal %s Words" % 0
 	$UI/Menu/Animation.play("NewGame")
 	$UI/CenterContainer/NewGamePopup.show()
 	typingOnBoard = false
@@ -421,3 +423,7 @@ func _on_ConfirmGiveUp_pressed():
 
 func _on_CancelGiveUp_pressed():
 	$UI/CenterContainer/GiveUpConfirmation.hide()
+
+
+func _on_Reveal_value_changed(value):
+	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Label.text = "Reveal %s Words" % value
