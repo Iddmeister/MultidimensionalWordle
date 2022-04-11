@@ -4,6 +4,7 @@ export var correct:Color
 export var misplaced:Color
 export var incorrect:Color
 export var resigned:Color
+export var revealed:Color
 
 export var onlyAllowedGuesses:bool = true
 export var randomizeWords:bool = true
@@ -348,11 +349,72 @@ func updateRevealButton(y,x):
 					get_node("UI/Stuff/GiveUp").text="Reveal Words"
 
 
+func revealWord(onX:bool, index:int):
+	
+	if onX:
+		
+		var word:String = words.x[index]
+		
+		var grid = grid3D.get_node("Answer")
+		
+		for letter in range(word.length()):
+		
+			grid.get_node("Viewport/Grid").setLetter(index, letter, word[letter].to_upper(), revealed)
+		
+		wordsCorrect.x[index] = true
+		
+	else:
+		var word:String = words.y[index]
+		
+		var grid = grid3D.get_node(String(index))
+		
+		for letter in range(word.length()):
+			grid.get_node("Viewport/Grid").get_node("a"+String(letter)).text = word[letter].to_upper()
+			grid.get_node("Viewport/Grid").get_node("a"+String(letter)).setColour(revealed)
+	
+		wordsCorrect.y[index] = true
+	
+	pass
 
 func newGame(s:String):
 		
 	gameSeed = s
 	reset(gameSeed)
+	
+	var numWordsToReveal:int = int($UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value)
+	
+	if not numWordsToReveal == 0:
+		seed(s.hash())
+		
+		var flip:bool = randf()>0.5
+		
+		#Is Revealed Arrays
+		var xWords = [false, false, false, false, false, false]
+		var yWords = [false, false, false, false, false, false]
+		
+		for r in range(numWordsToReveal):
+			print(r)
+			var onX:bool = (r%2) == 0
+			onX = not onX if flip else onX #Flip vairable so no pattern
+			
+			var rWords = xWords.duplicate() if onX else yWords.duplicate()
+			
+			var index:int
+			
+			while true:
+				index = round(rand_range(0, rWords.size()-1))
+				if rWords[index]:
+					continue
+				break
+				
+			if onX:
+				xWords[index] = true
+			else:
+				yWords[index] = true
+				
+			revealWord(onX, index)
+			
+	
 	gameOver = false
 	wordsCorrect = {
 		"x":[false, false, false, false, false, false],
@@ -364,6 +426,45 @@ func newGame(s:String):
 	
 	print(gameSeed)
 	$UI/Stuff/CenterContainer/Seed.text = String(gameSeed)
+	
+	
+#	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Words.value == 0:
+#		pass
+#	else:
+#		wordsToReveal = $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Words.value
+#		xUnrevealed = 6
+#		yUnrevealed = 6
+#		unrevealedArray = [[0,1,2,3,4,5],[0,1,2,3,4,5]] # I suck at programming so I have to bodge everything to make up for it. Don't mind all these arrays :) 
+#		for numberRevealed in range(wordsToReveal):	
+#			randomize()
+#			integerToReveal = int(round((rand_range(.5,xUnrevealed+yUnrevealed+.5))))
+#			if integerToReveal > xUnrevealed:
+#				integerToReveal -= xUnrevealed
+#				for letter in range(len(words["y"][integerToReveal-1])):
+#					(get_node("3DGrid/"+String(unrevealedArray[0][integerToReveal-1])).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words["y"][unrevealedArray[0][integerToReveal-1]][letter].to_upper()
+#					(get_node("3DGrid/"+String(unrevealedArray[0][integerToReveal-1])).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(completelyCorrect)
+#				wordsCorrect["y"][unrevealedArray[0][integerToReveal-1]] = true
+#				unrevealedArray[0].remove(integerToReveal-1)
+#				yUnrevealed -= 1
+#			else:
+#				for letter in range(len(words["x"][integerToReveal-1])):
+#					var answerGrid = $"3DGrid".get_node("Answer").get_node("Viewport/Grid")
+#					answerGrid.setLetter((unrevealedArray[1][integerToReveal-1]), letter, words["x"][unrevealedArray[1][integerToReveal-1]][letter].to_upper(), completelyCorrect)
+#				wordsCorrect["x"][unrevealedArray[1][integerToReveal-1]] = true
+#				unrevealedArray[1].remove(integerToReveal-1)
+#				xUnrevealed -= 1
+#
+#	gameOver = false
+#	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
+#	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").text="Give Up"
+#	get_node("UI/PanelContainer/MarginContainer/VBoxContainer/Reveal").show()
+#
+#	print(gameSeed)
+#	$UI/PanelContainer/MarginContainer/VBoxContainer/Seed.text = "Seed: "+String(gameSeed)
+#
+#	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer/Seed.text = ""
+#
+#	$UI/CenterContainer/NewGamePopup.hide()
 
 func _on_NewGame_pressed():
 	
