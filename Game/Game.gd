@@ -257,7 +257,11 @@ func checkWord(word:String, x:int, y:int):
 	
 			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct, CORRECT)
 			
-		if word == answerY:
+			
+		if wordsCorrect["x"][x] or wordsCorrect["y"][y]:
+			pass
+			
+		elif word == answerY:
 			
 			wordsCorrect["y"][y] = true
 			
@@ -266,7 +270,7 @@ func checkWord(word:String, x:int, y:int):
 				grid.get_node("a"+String(letter)).text = word[letter].to_upper()
 				grid.get_node("a"+String(letter)).setColour(correct)
 				
-		if word == answerX:
+		elif word == answerX:
 			
 			wordsCorrect["x"][x] = true
 			
@@ -381,6 +385,11 @@ func newGame(s:String):
 	gameSeed = s
 	reset(gameSeed)
 	
+	wordsCorrect = {
+		"x":[false, false, false, false, false, false],
+		"y":[false, false, false, false, false, false],
+	}
+	
 	var numWordsToReveal:int = int($UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value)
 	
 	if not numWordsToReveal == 0:
@@ -416,10 +425,6 @@ func newGame(s:String):
 			
 	
 	gameOver = false
-	wordsCorrect = {
-		"x":[false, false, false, false, false, false],
-		"y":[false, false, false, false, false, false],
-	}
 	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
 	get_node("UI/Stuff/GiveUp").text="Give Up"
 	get_node("UI/Stuff/GiveUp").show()
