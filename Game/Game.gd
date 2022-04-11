@@ -402,7 +402,6 @@ func newGame(s:String):
 		var yWords = [false, false, false, false, false, false]
 		
 		for r in range(numWordsToReveal):
-			print(r)
 			var onX:bool = (r%2) == 0
 			onX = not onX if flip else onX #Flip vairable so no pattern
 			
