@@ -258,7 +258,7 @@ func checkWord(word:String, x:int, y:int):
 			setLetter(grid.currentLine, letter, word[letter].to_upper(), correct, CORRECT)
 			
 			
-		if wordsCorrect["x"][x] or wordsCorrect["y"][y]:
+		if (word == answerX and wordsCorrect["x"][x]) or (word == answerY and wordsCorrect["y"][y]):
 			pass
 			
 		elif word == answerY:
