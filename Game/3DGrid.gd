@@ -20,7 +20,7 @@ func _ready():
 	
 	if automaticViewSwitch:
 		
-		if (aspect.y < 2) and OS.window_size.x >= 1000:
+		if (aspect.y < 2) and OS.window_size.x >= 1100:
 			singleView = false
 		else:
 			singleView = true
@@ -46,7 +46,7 @@ func moveCam(board, rotate:bool=false):
 	
 func resized():
 	aspect = OS.window_size/OS.window_size.x
-	if (aspect.y < aspect.x) and OS.window_size.x >= 1000:
+	if (aspect.y < aspect.x) and OS.window_size.x >= 1100:
 		singleView = false
 	else:
 		singleView = true

@@ -40,6 +40,8 @@ var wordsCorrect:Dictionary = {
 	
 }
 
+var preRevealedWords = wordsCorrect.duplicate(true)
+
 var wordsEntered:Array = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
 
 func reset(s:String):
@@ -64,7 +66,7 @@ func _ready():
 		
 		var date:Dictionary = OS.get_date()
 		var dateString = "%s/%s/%s" % [date["day"], date["month"], date["year"]]
-		$UI/Stuff/CenterContainer/Seed.text = dateString
+		$UI/Stuff/CenterContainer/VBoxContainer/Seed.text = dateString
 		#Hash the date to make cheating harder
 		#gameSeed = String(dateString.hash())
 		gameSeed = dateString
@@ -340,6 +342,7 @@ func checkWord(word:String, x:int, y:int):
 func updateRevealButton(y,x):
 	if (not false in wordsCorrect["x"]) and (not false in wordsCorrect["y"]):
 		get_node("UI/Stuff/GiveUp").hide()
+		gameComplete()
 	else:
 		wordsEntered[y][x] = true
 		for gridNumber in range(6):
@@ -351,6 +354,31 @@ func updateRevealButton(y,x):
 						return
 			if gridNumber == 5:
 					get_node("UI/Stuff/GiveUp").text="Reveal Words"
+					gameComplete()
+					
+					
+func gameComplete():
+	
+	var score:int = 0
+	
+	for word in range(preRevealedWords.x.size()):
+		if preRevealedWords.x[word]:
+			wordsCorrect.x[word] = false
+	for word in range(preRevealedWords.y.size()):
+		if preRevealedWords.y[word]:
+			wordsCorrect.y[word] = false
+			
+	var correctWords = wordsCorrect.x.duplicate()
+	correctWords.append_array(wordsCorrect.y.duplicate())
+			
+	for word in correctWords:
+		if word:
+			score += 1
+	print(score)
+	$UI/Stuff/CenterContainer/VBoxContainer/Score.text = "%s/12" % score
+	$UI/Stuff/CenterContainer/VBoxContainer/Score.modulate.a = 1
+	
+	pass
 
 
 func revealWord(onX:bool, index:int):
@@ -366,6 +394,8 @@ func revealWord(onX:bool, index:int):
 			grid.get_node("Viewport/Grid").setLetter(index, letter, word[letter].to_upper(), revealed)
 		
 		wordsCorrect.x[index] = true
+		preRevealedWords.x[index] = true
+		
 		
 	else:
 		var word:String = words.y[index]
@@ -377,6 +407,7 @@ func revealWord(onX:bool, index:int):
 			grid.get_node("Viewport/Grid").get_node("a"+String(letter)).setColour(revealed)
 	
 		wordsCorrect.y[index] = true
+		preRevealedWords.y[index] = true
 	
 	pass
 
@@ -389,6 +420,8 @@ func newGame(s:String):
 		"x":[false, false, false, false, false, false],
 		"y":[false, false, false, false, false, false],
 	}
+	
+	preRevealedWords = wordsCorrect.duplicate(true)
 	
 	var numWordsToReveal:int = int($UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value)
 	
@@ -403,7 +436,7 @@ func newGame(s:String):
 		
 		for r in range(numWordsToReveal):
 			var onX:bool = (r%2) == 0
-			onX = not onX if flip else onX #Flip vairable so no pattern
+			onX = not onX if flip else onX #Flip variable so no pattern
 			
 			var rWords = xWords.duplicate() if onX else yWords.duplicate()
 			
@@ -425,11 +458,13 @@ func newGame(s:String):
 	
 	gameOver = false
 	wordsEntered = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
+	$UI/Stuff/CenterContainer/VBoxContainer/Score.text = ""
+	$UI/Stuff/CenterContainer/VBoxContainer/Score.modulate.a = 0
 	get_node("UI/Stuff/GiveUp").text="Give Up"
 	get_node("UI/Stuff/GiveUp").show()
 	
 	print(gameSeed)
-	$UI/Stuff/CenterContainer/Seed.text = String(gameSeed)
+	$UI/Stuff/CenterContainer/VBoxContainer/Seed.text = String(gameSeed)
 	
 	
 #	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Words.value == 0:
