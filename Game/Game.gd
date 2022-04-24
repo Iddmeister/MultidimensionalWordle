@@ -361,15 +361,17 @@ func gameComplete():
 	
 	var score:int = 0
 	
+	var newWordsCorrect = wordsCorrect.duplicate(true)
+	
 	for word in range(preRevealedWords.x.size()):
 		if preRevealedWords.x[word]:
-			wordsCorrect.x[word] = false
+			newWordsCorrect.x[word] = false
 	for word in range(preRevealedWords.y.size()):
 		if preRevealedWords.y[word]:
-			wordsCorrect.y[word] = false
+			newWordsCorrect.y[word] = false
 			
-	var correctWords = wordsCorrect.x.duplicate()
-	correctWords.append_array(wordsCorrect.y.duplicate())
+	var correctWords = newWordsCorrect.x.duplicate()
+	correctWords.append_array(newWordsCorrect.y.duplicate())
 			
 	for word in correctWords:
 		if word:
