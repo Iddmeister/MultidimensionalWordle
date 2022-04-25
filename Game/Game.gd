@@ -17,7 +17,7 @@ var validSolutionWordsPath:String = "res://words/wordle-answers-alphabetical.txt
 var allowedWords:Array = []
 
 var validLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var validCharacters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var validCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 var numberCorrect = 0
 var gameOver:bool = false
@@ -41,8 +41,73 @@ var wordsCorrect:Dictionary = {
 }
 
 var preRevealedWords = wordsCorrect.duplicate(true)
+var numWordsToReveal:int = 0
 
 var wordsEntered:Array = [[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false],[false, false, false, false, false, false]]
+
+func saveGame():
+	
+	var file = ConfigFile.new()
+	
+	var data:Dictionary = {}
+	
+	data.seed = gameSeed
+	data.numWordsToReveal = numWordsToReveal
+	
+	for x in range(6):
+		
+		for y in range(6):
+			
+			var board = $"3DGrid".get_node(String(x))
+			data[Vector2(x, y)] = {"word":board.get_node("Viewport/Grid").getLineLetters(y), "entered":not board.get_node("Viewport/Grid").getLetterObject(y, 0).state == NORM}
+	
+	file.set_value("data", "data", data)
+	file.save("user://wor3dldata.save")
+	
+	pass
+	
+func retrieveGame():
+	
+	var file = ConfigFile.new()
+	
+	var err = file.load("user://wor3dldata.save")
+	
+	if not err == OK:
+		return
+		
+	var data:Dictionary = file.get_value("data", "data", {})
+	
+	if data.empty():
+		return
+		
+	newGame(data.seed, data.numWordsToReveal)
+	
+	for x in range(6):
+		
+		for y in range(6):
+			
+			var board = $"3DGrid".get_node(String(x))
+			var info = data[Vector2(x, y)]
+			
+			$"3DGrid".selectBoard(board, false)
+			board.get_node("Viewport/Grid").selectLine(y)
+			for letter in info.word:
+				board.get_node("Viewport/Grid").addLetter(letter)
+			if info.entered:
+				submitWord()
+				
+	$"3DGrid".selectedBoard.get_node("Viewport/Grid").selectLine(0)
+	$"3DGrid".selectedBoard.get_node("Back").modulate = $"3DGrid".selectedBoard.get_node("Viewport/Grid").selectedColor
+	
+func clearSave():
+	
+	var file = ConfigFile.new()
+	
+	var data:Dictionary = {}
+	
+	file.set_value("data", "data", data)
+	file.save("user://wor3dldata.save")
+
 
 func reset(s:String):
 	
@@ -67,8 +132,6 @@ func _ready():
 		var date:Dictionary = OS.get_date()
 		var dateString = "%s/%s/%s" % [date["day"], date["month"], date["year"]]
 		$UI/Stuff/CenterContainer/VBoxContainer/Seed.text = dateString
-		#Hash the date to make cheating harder
-		#gameSeed = String(dateString.hash())
 		gameSeed = dateString
 		
 		pass
@@ -95,6 +158,8 @@ func _ready():
 		allowedWords.append(f.get_line())
 		
 	f.close()
+	
+	retrieveGame()
 	
 	
 	
@@ -184,6 +249,7 @@ func pressedKey(letter:String):
 	elif letter in validLetters:
 		
 		addLetter(letter)
+		saveGame()
 
 
 func submitWord():
@@ -205,8 +271,6 @@ func submitWord():
 			
 			word += grid.getLetter(grid.currentLine, l)
 			
-			
-			
 		if onlyAllowedGuesses:
 			if not (word.to_lower() in allowedWords):
 				return
@@ -214,6 +278,7 @@ func submitWord():
 		checkWord(word.to_lower(), grid.currentLine, int(board.name))
 		emit_signal("wordSubmitted", grid, grid.currentLine)
 		grid.enter()
+		saveGame()
 		
 		pass
 		
@@ -239,6 +304,7 @@ func removeLetter():
 	if grid.complete or board.name == "Answer":
 		return
 	grid.removeLetter()
+	saveGame()
 	
 	
 enum {NORM, INCORRECT, MISPLACED, CORRECT}
@@ -413,8 +479,9 @@ func revealWord(onX:bool, index:int):
 	
 	pass
 
-func newGame(s:String):
+func newGame(s:String, _numWordsToReveal:int=0):
 		
+	numWordsToReveal = _numWordsToReveal
 	gameSeed = s
 	reset(gameSeed)
 	
@@ -424,8 +491,6 @@ func newGame(s:String):
 	}
 	
 	preRevealedWords = wordsCorrect.duplicate(true)
-	
-	var numWordsToReveal:int = int($UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value)
 	
 	if not numWordsToReveal == 0:
 		seed(s.hash())
@@ -515,17 +580,31 @@ func _on_NewGame_pressed():
 	$UI/CenterContainer/NewGamePopup.show()
 	typingOnBoard = false
 
+func generateRandomSeed() -> String:
+	
+	randomize()
+	
+	var s = ""
+	
+	for i in range(5):
+		
+		s += validCharacters[int(rand_range(0, 26))]
+		
+	return s
+
+
 func _on_Start_pressed():
 
+	clearSave()
 	$UI/Cover2.hide()
 	$UI/CenterContainer/NewGamePopup.hide()
 	if seedEdit.text == "":
-		randomize()
-		newGame(String(int(rand_range(0, 99999))))
+		newGame(generateRandomSeed(), int($UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value))
 	else:
-		newGame(String(seedEdit.text))
+		newGame(String(seedEdit.text), int($UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Reveal.value))
 	seedEdit.text = ""
 	typingOnBoard = true
+	saveGame()
 
 func _on_Cancel_pressed():
 	$UI/CenterContainer/NewGamePopup.hide()
@@ -561,7 +640,7 @@ func _on_ConfirmGiveUp_pressed():
 						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).text = words[dimension][depth][letter].to_upper()
 						(get_node("3DGrid/"+String(depth)).get_node("Viewport/Grid")).get_node("a"+String(letter)).setColour(resigned)
 			
-	
+	gameComplete()
 
 func _on_CancelGiveUp_pressed():
 	$UI/CenterContainer/GiveUpConfirmation.hide()
@@ -569,3 +648,20 @@ func _on_CancelGiveUp_pressed():
 
 func _on_Reveal_value_changed(value):
 	$UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Label.text = "Reveal %s Words" % value
+
+
+func _on_CancelDaily_pressed():
+	$UI/CenterContainer/DailyConfirmation.hide()
+
+
+func _on_ConfirmDaily_pressed():
+	$UI/CenterContainer/DailyConfirmation.hide()
+	var date:Dictionary = OS.get_date()
+	var dateString = "%s/%s/%s" % [date["day"], date["month"], date["year"]]
+	newGame(dateString)
+	saveGame()
+
+
+func _on_Daily_pressed():
+	$UI/Menu/Animation.play("Hide")
+	$UI/CenterContainer/DailyConfirmation.show()

@@ -58,21 +58,10 @@ var panning:bool = false
 func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 	if (event is InputEventScreenTouch or (event is InputEventMouseButton and event.is_action("click"))) and event.pressed:
 		
-		
 		if board.name == "Answer" and not singleView:
 			return
 		
-		if not board == selectedBoard:
-			
-			selectedBoard = board
-			
-			if singleView:
-				cycleBoards()
-		
-		for b in get_children():
-			b.get_node("Back").modulate = Color(0.058824, 0.058824, 0.058824)
-		
-		selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor
+		selectBoard(board, true)
 		
 		var offset = max(min(int(((selectedBoard.get_node("Area").transform.origin-pos).y)+3), 5), 0)
 		
@@ -83,6 +72,21 @@ func boardEvent(cam, event, pos, normal, index, board:Sprite3D):
 			get_tree().call_group("Letter", "setBorder", Color(1, 1, 1, 1))
 		
 	pass
+	
+func selectBoard(board, cycle):
+	if not board == selectedBoard:
+		
+		selectedBoard = board
+		
+		if singleView and cycle:
+			cycleBoards()
+	
+	for b in get_children():
+		b.get_node("Back").modulate = Color(0.058824, 0.058824, 0.058824)
+	
+	selectedBoard.get_node("Back").modulate = selectedBoard.get_node("Viewport/Grid").selectedColor
+	
+	
 	
 func changeLayout(x:float, z:float):
 	

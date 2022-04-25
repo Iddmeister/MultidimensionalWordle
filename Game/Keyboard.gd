@@ -83,13 +83,17 @@ func updateKeys(_letters:Dictionary):
 	
 func updateKeyboard(grid, line):
 	
+	return
+	
+	## Nah
+	
 	var yLetters = grid.getLetters()
 	
 	var xLetters = []
 	
 	for x in range(6):
 		var board = game.grid3D
-		xLetters += board.get_node(String(x)).get_node("Viewport/Grid").getLineLetters(line)
+		xLetters += board.get_node(String(x)).get_node("Viewport/Grid").getLineLetterObjects(line)
 		
 	var letterStates:Dictionary = {}
 		

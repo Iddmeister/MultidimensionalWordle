@@ -27,12 +27,22 @@ func selectLine(line:int):
 	
 	pass
 	
-func getLineLetters(line:int) -> Array:
+func getLineLetterObjects(line:int) -> Array:
 	
 	var letters = []
 	
 	for l in range(5):
 		letters.append(get_child((line*5)+l))
+		
+		
+	return letters
+	
+func getLineLetters(line:int) -> String:
+	
+	var letters = ""
+	
+	for l in range(5):
+		letters += get_child((line*5)+l).text
 		
 	return letters
 	
@@ -127,6 +137,9 @@ func setLetter(line:int, c:int, l:String, color:Color=Color(1, 1, 1, 1), state:i
 	
 func getLetter(line:int, c:int):
 	return get_child((line*5)+c).text
+	
+func getLetterObject(line:int, c:int):
+	return get_child((line*5)+c)
 	
 func clear():
 	for letter in get_children():
