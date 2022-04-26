@@ -127,6 +127,9 @@ func reset(s:String):
 
 func _ready():
 	
+	
+	
+	
 	if gameSeed == "":
 		
 		var date:Dictionary = OS.get_date()

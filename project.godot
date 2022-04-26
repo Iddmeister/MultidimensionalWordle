@@ -26,12 +26,11 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Multidimensional Wordle"
+config/name="3D Wordle"
 run/main_scene="res://Game/Game.tscn"
 boot_splash/image="res://Misc/logo.png"
 boot_splash/bg_color=Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 config/icon="res://Misc/logo.png"
-config/windows_native_icon="res://Misc/logo.png"
 
 [debug]
 
