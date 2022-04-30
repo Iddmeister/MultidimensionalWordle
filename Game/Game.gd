@@ -126,10 +126,6 @@ func reset(s:String):
 	pass
 
 func _ready():
-	
-	
-	
-	
 	if gameSeed == "":
 		
 		var date:Dictionary = OS.get_date()
@@ -446,7 +442,7 @@ func gameComplete():
 		if word:
 			score += 1
 	print(score)
-	$UI/Stuff/CenterContainer/VBoxContainer/Score.text = "%s/12" % score
+	$UI/Stuff/CenterContainer/VBoxContainer/Score.text = "%s/%s" % [score, 12-numWordsToReveal]
 	$UI/Stuff/CenterContainer/VBoxContainer/Score.modulate.a = 1
 	
 	pass
@@ -533,8 +529,13 @@ func newGame(s:String, _numWordsToReveal:int=0):
 	get_node("UI/Stuff/GiveUp").text="Give Up"
 	get_node("UI/Stuff/GiveUp").show()
 	
+	if $"3DGrid".singleView:
+		$"3DGrid".cycleBoards()
+	
 	print(gameSeed)
 	$UI/Stuff/CenterContainer/VBoxContainer/Seed.text = String(gameSeed)
+	
+	
 	
 	
 #	if $UI/CenterContainer/NewGamePopup/VBoxContainer/HBoxContainer3/Words.value == 0:
